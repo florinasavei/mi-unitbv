@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="001HelloWorld2.c">
+    <ClCompile Include="012TriangleArea.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
