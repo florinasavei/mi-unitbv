@@ -11,7 +11,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="012TriangleArea.c" />
+    <ClCompile Include="026CMMDCEuclid.c" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{8A44C951-6F10-4F25-816D-4C143112A397}</ProjectGuid>
