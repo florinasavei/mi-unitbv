@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="029SumOfSeries.c">
+    <ClCompile Include="030SwitchStatement.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
