@@ -1,3 +1,4 @@
+/* Sum of series defines by a reccurence relationship betweet its terms*/
 #include <stdio.h>
 
 void main(){

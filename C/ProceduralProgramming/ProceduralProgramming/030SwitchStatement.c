@@ -1,3 +1,4 @@
+/*A program that prints a list of options and tests it*/
 #include <stdio.h>
 #include <conio.h>
 
@@ -12,6 +13,7 @@ void main(){
 		printf("\t Option:");
 		fflush(stdin);
 		opt = getchar();
+		printf(opt);
 		if (opt == "x" || opt == "X") return;
 		printf("\n\t Enter two integers");
 		scanf_s("%d%d",&a,&b);
