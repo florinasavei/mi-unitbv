@@ -1,0 +1,12 @@
+package theNewBoston;
+
+import java.util.Scanner;
+public class apples {
+	
+	public static void main(String args[]){
+		Scanner variabilaMea= new Scanner(System.in);
+		
+		System.out.print(variabilaMea.nextLine());
+	}
+
+}

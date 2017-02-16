@@ -1,0 +1,21 @@
+package theNewBoston;
+
+import java.util.Scanner;
+public class apples {
+	
+	public static void main(String args[]){
+		Scanner x= new Scanner(System.in);
+		double fnum, snum, answer;
+		
+		System.out.println("Enter first number :");
+		fnum=x.nextDouble();
+		
+		System.out.println("Enter second number :");
+		snum=x.nextDouble();
+		
+		answer= fnum + snum;
+		
+		System.out.println(answer);
+	}
+
+}
