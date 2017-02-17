@@ -23,7 +23,7 @@ public class User implements Serializable {
             System.out.println("Introduceti adresa de email: ");
             String email = reader.nextLine();
 
-            if (Tema2Alternativa.IsEmailValid(email))
+            if (Application.IsEmailValid(email))
             {
                 user.Email = email;
                 correct= true;
@@ -40,7 +40,7 @@ public class User implements Serializable {
             System.out.println("Introduceti username-ul: ");
             String username = reader.nextLine();
 
-            if (Tema2Alternativa.IsUsernameValid(username))
+            if (Application.IsUsernameValid(username))
             {
                 user.Username = username;
                 correct= true;

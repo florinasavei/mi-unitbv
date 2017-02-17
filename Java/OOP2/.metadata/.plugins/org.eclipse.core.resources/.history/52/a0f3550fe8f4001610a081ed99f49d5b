@@ -29,7 +29,7 @@ package Teme.tema1;
  *			Media notelor peste 8 ale studentului X, al carui nume este introdus de la tastatura.
  *			Daca pentru vre-una dintre cerinte nu avem rezultat (Ex: nu exista nici un student nascut de Craciun), atunci se va semnala acest lucru printr-un mesaj.
  *
- * 		TODO: Stergerea unui student sau a unei note
+ * 
  * 
  * @author Asavei Florin
  *
@@ -59,10 +59,10 @@ public class Tema1 {
 
         do {
 
-            System.out.println("Alegeti o optiune:");
+            System.out.println("Introdu un numar corespunzator optiunii :");
             System.out.println("-------------------------\n");
             System.out.println("1 - Introduceti un student.");
-            System.out.println("2 - Introduceti note pentru un student.");
+            System.out.println("2 - Introduceti note pt student.");
             System.out.println("3 - Sortare studenti dupa anul de nastere.");
             System.out.println("4 - Afisare studenti cu numar de Vodafone.");
             System.out.println("5 - Afisare studenti nascuti de Craciun.");
@@ -71,12 +71,13 @@ public class Tema1 {
             System.out.println("8 - Afisare media notelor pentru studentul introdus.");
             System.out.println("9 - Printare lista curenta studenti.");
             System.out.println("10 - Inchidere aplicatie. (Pentru a salva lista)");
-
+            System.out.println("-------------------------\n");
+            
             int optiune = Integer.parseInt(scanner.nextLine());
 
             switch (optiune) {
                 case 1:
-                    listaStudenti.add(InsertStudent());
+                    listaStudenti.add(AdaugaStudent());
                     break;
                 case 2:
                     System.out.println("Introduceti id-ul studentului pentru care vreti sa introduceti note:");
@@ -110,7 +111,7 @@ public class Tema1 {
                 case 4:
                     boolean foundVodafone = false;
                     for (Student d : listaStudenti) {
-                        if (d.HasVodafone()) {
+                        if (d.areVodafone()) {
                             System.out.println(d.nume + " " + d.prenume + " are Vodafone.");
                             foundVodafone = true;
                         }
@@ -219,7 +220,7 @@ public class Tema1 {
         scanner.close();
     }
 
-    private static Student InsertStudent() {
+    private static Student AdaugaStudent() {
 
         Student student = Student.IntroducereStudent();
 

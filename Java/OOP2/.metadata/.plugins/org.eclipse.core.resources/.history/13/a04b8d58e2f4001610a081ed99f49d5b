@@ -29,7 +29,7 @@ package Teme.tema1;
  *			Media notelor peste 8 ale studentului X, al carui nume este introdus de la tastatura.
  *			Daca pentru vre-una dintre cerinte nu avem rezultat (Ex: nu exista nici un student nascut de Craciun), atunci se va semnala acest lucru printr-un mesaj.
  *
- * 		TODO: Stergerea unui student sau a unei note
+ * 
  * 
  * @author Asavei Florin
  *
@@ -72,9 +72,9 @@ public class Tema1 {
             System.out.println("9 - Printare lista curenta studenti.");
             System.out.println("10 - Inchidere aplicatie. (Pentru a salva lista)");
 
-            int optiune = Integer.parseInt(scanner.nextLine());
+            int choice = Integer.parseInt(scanner.nextLine());
 
-            switch (optiune) {
+            switch (choice) {
                 case 1:
                     listaStudenti.add(InsertStudent());
                     break;

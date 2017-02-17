@@ -20,7 +20,7 @@ public class Serializare {
 		            out.writeObject(object);
 		            out.close();
 		            fileOut.close();
-		            System.out.printf("Datele salvate in " + fileName + ".ser\n");
+		            System.out.printf("Serializared data is saved in " + fileName + ".ser\n");
         } catch (IOException i) {
             i.printStackTrace();
         }
