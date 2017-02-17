@@ -1,6 +1,0 @@
-package Teme.tema2alt;
-
-package com.java.tema2;
-
-public class Buyer extends User{
-}
