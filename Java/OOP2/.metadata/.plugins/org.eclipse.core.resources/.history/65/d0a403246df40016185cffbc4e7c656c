@@ -1,0 +1,10 @@
+package theNewBoston;
+
+import java.util.Scanner;
+public class tuna {
+	public void simpleMessage(){
+		
+		Scanner imput = new Scanner(System.in);
+	}
+
+}

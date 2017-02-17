@@ -1,0 +1,45 @@
+package teme;
+
+/**
+ * 
+ * Tema 1 POO 2
+Invatamant la Distanta
+
+Sa se realizeze o aplicatie in Java care sa permita citirea de la tastatura a unei liste de studenti.
+
+Pentru fiecare student se vor citi urmatoarele informatii:
+		Nume
+		Prenume
+		CNP
+		Nr Telefon
+		Numarul de note
+		Lista de note
+
+Pentru fiecare nota se va citi:
+Materia
+Nota
+Data
+
+Cerinte:
+Sa se sorteze studentii dupa anul nasterii
+Sa se afiseze studentii care au numar de Vodafone
+Sa se afiseze studentii nascuti de Craciun
+Sa se afiseze studentii care au peste 5 la materia POO2
+Sa se afiseze studentii care au restante, impreuna cu lista restantelor
+Media notelor peste 8 ale studentului X, al carui nume este introdus de la tastatura.
+Daca pentru vre-una dintre cerinte nu avem rezultat (Ex: nu exista nici un student nascut de Craciun), atunci se va semnala acest lucru printr-un mesaj.
+
+ * 
+ * 
+ * @author Asavei Florin
+ *
+ */
+
+public class Tema1 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

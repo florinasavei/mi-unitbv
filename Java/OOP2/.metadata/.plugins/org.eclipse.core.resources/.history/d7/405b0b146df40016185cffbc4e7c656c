@@ -1,0 +1,9 @@
+package theNewBoston;
+
+public class tuna {
+	public void simpleMessage(){
+		
+		System.out.println("I Am a tuna");
+	}
+
+}

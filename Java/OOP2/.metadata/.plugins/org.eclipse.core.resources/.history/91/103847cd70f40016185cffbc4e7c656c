@@ -1,0 +1,13 @@
+package theNewBoston;
+
+import java.util.Scanner;
+public class apples {
+	
+	public static void main(String args[]){
+	
+		tuna tunaObject= new tuna(String name);
+		tunaObject.simpleMessage("Hello" + name);
+		
+	}
+
+}
