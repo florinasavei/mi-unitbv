@@ -1,0 +1,18 @@
+package Serialize;
+
+import java.io.*;
+
+public class Main {
+
+	public static void main(String[] args) {
+		Person arthur=new Person();
+		
+		arthur.name = "Arthur Dent";
+		arthur.age=44;
+	}
+	
+	String fileName="data.bin";
+	
+	ObjectOutputString os = new ObjectOutputString(new FileOutputStream(fileName));
+
+}

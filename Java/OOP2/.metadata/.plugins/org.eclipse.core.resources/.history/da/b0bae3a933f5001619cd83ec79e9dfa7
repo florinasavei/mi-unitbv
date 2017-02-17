@@ -1,0 +1,7 @@
+package Serialize;
+
+public class Person {
+
+		public String age;
+		
+}
