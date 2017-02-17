@@ -61,16 +61,16 @@ public class Tema1 {
 
             System.out.println("Alegeti o optiune:");
             System.out.println("-------------------------\n");
-            System.out.println("1 : Introduceti un student.");
-            System.out.println("2 : Introduceti note pentru un student.");
-            System.out.println("3 : Sortarea studenti dupa anul de nastere.");
-            System.out.println("4 : Afisarea studentilor cu numar de Vodafone.");
-            System.out.println("5 : Afisarea studentilor nascuti de Craciun.");
-            System.out.println("6 : Afisarea studentilor care au peste 5 la materia POO2.");
-            System.out.println("7 : Afisarea studentilor care au restante, impreuna cu lista restantelor.");
-            System.out.println("8 : Afisarea mediei notelor pentru studentul introdus.");
-            System.out.println("9 : Printare lista curenta studenti.");
-            System.out.println("10 : Inchide si salveaza.");
+            System.out.println("1 - Introduceti un student.");
+            System.out.println("2 - Introduceti note pentru un student.");
+            System.out.println("3 - Sortarea studenti dupa anul de nastere.");
+            System.out.println("4 - Afisarea studentilor cu numar de Vodafone.");
+            System.out.println("5 - Afisarea studentilor nascuti de Craciun.");
+            System.out.println("6 - Afisarea studentilor care au peste 5 la materia POO2.");
+            System.out.println("7 - Afisarea studentilor care au restante, impreuna cu lista restantelor.");
+            System.out.println("8 - Afisarea mediei notelor pentru studentul introdus.");
+            System.out.println("9 - Printare lista curenta studenti.");
+            System.out.println("10 - Inchide si salveaza.");
 
             int optiune = Integer.parseInt(scanner.nextLine());
 

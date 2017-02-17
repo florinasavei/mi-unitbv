@@ -127,7 +127,7 @@ public class Student implements Serializable {
         }
 
         if (note.equals(""))
-            note = "Nici o nota introdusa\n";
+            note = "Studentul nu are note.\n";
 
         return this.identifier + ". " +
                 this.nume +
@@ -140,8 +140,8 @@ public class Student implements Serializable {
                 " Telefon: " +
                 this.telefon +
                 "\n" +
-                "Note \n" +
+                "== Note =================================\n" +
                 note +
-                "-------------------------------------\n";
+                "=========================================\n";
     }
 }

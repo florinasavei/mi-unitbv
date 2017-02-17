@@ -25,12 +25,12 @@ public class Deserializare {
             i.printStackTrace();
             return null;
         } catch (ClassNotFoundException c) {
-            System.out.println("Clasa obiectului nu exista");
+            System.out.println("Object class not found");
             c.printStackTrace();
             return  null;
         }
 
-        System.out.println("Deserializat...\n");
+        System.out.println("Deserializared...\n");
         return object;
     }
 

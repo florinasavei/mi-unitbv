@@ -33,43 +33,43 @@ public class Student implements Serializable {
 
     public static Student IntroducereStudent() {
 
-        Scanner input = new Scanner(System.in);
+        Scanner reader = new Scanner(System.in);
         Student student = new Student();
 
         System.out.println("Introduceti numele studentului: ");
-        student.nume = input.nextLine();
+        student.nume = reader.nextLine();
 
         System.out.println("Introduceti prenumele studentului: ");
-        student.prenume = input.nextLine();
+        student.prenume = reader.nextLine();
 
         System.out.println("Introduceti CNP-ul studentului: ");
-        student.CNP = input.nextLine();
+        student.CNP = reader.nextLine();
         student.birthYear = Integer.parseInt(student.GetAnNastere());
 
         System.out.println("Introduceti numarul de telefon al studentului: ");
-        student.telefon = input.nextLine();
+        student.telefon = reader.nextLine();
 
         return student;
     }
 
     public void IntroducereNote() {
 
-        Scanner input = new Scanner(System.in);
+        Scanner reader = new Scanner(System.in);
 
         System.out.println("Introduceti numarul de note pe care doriti sa le introduceti: ");
-        int Notas = Integer.parseInt(input.nextLine());
+        int Notas = Integer.parseInt(reader.nextLine());
 
         for (int i = 0; i < Notas; i++) {
             Nota Nota = new Nota();
 
             System.out.println("Introduceti materia:");
-            Nota.materie = input.nextLine();
+            Nota.materie = reader.nextLine();
 
             System.out.println("Introduceti nota:");
-            Nota.nota = Double.parseDouble(input.nextLine());
+            Nota.nota = Double.parseDouble(reader.nextLine());
 
             System.out.println("Introduceti data:");
-            Nota.data = input.nextLine();
+            Nota.data = reader.nextLine();
 
             this.listaNote.add(Nota);
         }
@@ -127,7 +127,7 @@ public class Student implements Serializable {
         }
 
         if (note.equals(""))
-            note = "Nici o nota introdusa\n";
+            note = "Studentul nu are note.\n";
 
         return this.identifier + ". " +
                 this.nume +
@@ -140,8 +140,8 @@ public class Student implements Serializable {
                 " Telefon: " +
                 this.telefon +
                 "\n" +
-                "Note \n" +
+                "== Note =================================\n" +
                 note +
-                "-------------------------------------\n";
+                "=========================================\n";
     }
 }
