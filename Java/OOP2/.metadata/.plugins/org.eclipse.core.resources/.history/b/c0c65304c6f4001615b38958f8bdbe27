@@ -48,10 +48,10 @@ public class Tema1 {
         Scanner scanner = new Scanner(System.in);
         List<Student> listaStudenti = new ArrayList<Student>();
 
-        Object Deserializat = Deserializare.ObiectDeserializare("studenti");
+        Object Deserializared = Deserializare.ObiectDeserializare("studenti");
 
-        if (Deserializat != null) {
-            listaStudenti = (List<Student>) Deserializat;
+        if (Deserializared != null) {
+            listaStudenti = (List<Student>) Deserializared;
             PrintStudentList(listaStudenti);
         } else {
             System.out.println("Nu exista nicio inregistrare.\n");
