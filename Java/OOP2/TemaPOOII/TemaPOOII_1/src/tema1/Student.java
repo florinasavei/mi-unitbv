@@ -12,9 +12,8 @@ import java.io.Serializable;
 
 public class Student implements Serializable {
 
-    //<editor-fold desc="#properties">
 
-    private static int id = 1;
+    private static int idStudent = 1;
     int identifier;
     String nume;
     String prenume;
@@ -24,17 +23,15 @@ public class Student implements Serializable {
     int nrNote = 0;
     List<Nota> listaNote;
 
-    //</editor-fold>
-
-    //<editor-fold desc="#constructors">
-
     public Student() {
         listaNote = new ArrayList<Nota>();
-        this.identifier = id;
-        id++;
+        if (this.identifier>1){
+            idStudent=this.identifier;
+        }
+            this.identifier = idStudent;
+            idStudent++;
     }
 
-    //</editor-fold>
 
     public static Student IntroducereStudent() {
 
@@ -124,7 +121,7 @@ public class Student implements Serializable {
         System.out.println("Media notelor peste 8 ale studentului "+student.nume+" este: "+mean);
     }
 
-    public String toString() {
+    public String afisareStudent() {
 
         String note = "";
         for (Nota d : listaNote) {
@@ -134,19 +131,12 @@ public class Student implements Serializable {
         if (note.equals(""))
             note = "Nici o nota introdusa\n";
 
-        return this.identifier + ". " +
-                this.nume +
-                " " +
-                this.prenume +
-                "\n" +
-                " CNP: " +
-                this.CNP +
-                "\n" +
-                " Telefon: " +
-                this.telefon +
-                "\n" +
+        return "Id student: "+ this.identifier + "\n" +
+                "Nume & prenume: "+ this.nume +" " + this.prenume +"\n" +
+                " CNP: " + this.CNP +"\n" +
+                " Telefon: " + this.telefon +"\n\n" +
                 "Note \n" +
                 note +
-                "-------------------------------------\n";
+                "_________________________________________________\n";
     }
 }

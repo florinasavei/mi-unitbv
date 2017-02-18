@@ -5,18 +5,18 @@ import java.io.*;
 
 public class Deserializare {
 
-    public static Object ObiectDeserializare(String fileName) {
+    public static Object ObiectDeserializare(String numeFisier) {
 
         Object object;
 
         try {
 
-            File yourFile = new File(fileName + ".bin");
-            if (!yourFile.exists()) {
+            File fisierulMeu = new File(numeFisier + ".bin");
+            if (!fisierulMeu.exists()) {
                 return null;
             }
 
-            FileInputStream fileIn = new FileInputStream(fileName + ".ser");
+            FileInputStream fileIn = new FileInputStream(numeFisier + ".bin");
             ObjectInputStream in = new ObjectInputStream(fileIn);
             object = in.readObject();
             in.close();

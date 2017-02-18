@@ -55,7 +55,7 @@ public class Main1 {
         } else {
             System.out.println("Nu exista nicio inregistrare.\n");
         }
-        System.out.println("___________________________________________________\n");
+        System.out.println("#################################################\n");
         do {
 
             System.out.println("Alegeti o optiune:");
@@ -69,14 +69,18 @@ public class Main1 {
             System.out.println("8 : Afisarea mediei notelor pentru studentul introdus.");
             System.out.println("9 : Printare lista curenta studenti.");
             System.out.println("10 : Inchide si salveaza.");
-
-            int optiune = Integer.parseInt(scanner.nextLine());
-
+            
+        System.out.println("\n#################################################\n");
+        
+            int optiune = Integer.parseInt(scanner.nextLine()); //citim 
+        
+        System.out.println("\n#################################################\n");
+            
             switch (optiune) {
-                case 1:
+                case 1:  //introducem student
                     listaStudenti.add(IntroducereStudent());
                     break;
-                case 2:
+                case 2:  //introducem note pentru un student existent
                     System.out.println("Introduceti ID-ul studentului apoi introdu notele:");
                     int id = Integer.parseInt(scanner.nextLine());
                     boolean found = false;
@@ -166,8 +170,7 @@ public class Main1 {
 
                         if (foundFailed) {
                             System.out.println("\n\nStudentul " + d.nume + " " + d.prenume + " are restante.");
-                            System.out.println("________________________________");
-                            for (Nota f : listFailed) {
+                            System.out.println("\n");                            for (Nota f : listFailed) {
                                 System.out.println("Materia: " + f.materie + " - " + "Nota: " + f.nota + ".");
                             }
                         }
@@ -222,15 +225,15 @@ public class Main1 {
         Student student = Student.IntroducereStudent();
 
         System.out.println("Ati introdus urmatorul student: ");
-        System.out.println(student.toString());
-        System.out.println("___________________________________________\n");
+        System.out.println(student.afisareStudent());
+        System.out.println("_________________________________________________\n");
 
         return student;
     }
 
     private static void PrintStudentList(List<Student> list) {
         for (Student d : list) {
-            System.out.println(d.toString());
+            System.out.println(d.afisareStudent());
         }
     }
 }
