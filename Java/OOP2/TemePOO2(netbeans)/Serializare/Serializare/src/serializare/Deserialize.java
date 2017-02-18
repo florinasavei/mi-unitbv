@@ -10,16 +10,16 @@ public class Deserialize {
 
         try {
 
-            File yourFile = new File(fileName + ".ser");
+            File yourFile = new File(fileName + ".bin");
             if (!yourFile.exists()) {
                 return null;
             }
 
-            FileInputStream fileIn = new FileInputStream(fileName + ".ser");
-            ObjectInputStream in = new ObjectInputStream(fileIn);
-            object = in.readObject();
-            in.close();
-            fileIn.close();
+            try (FileInputStream fileIn = new FileInputStream(fileName + ".bin")) {
+                ObjectInputStream in = new ObjectInputStream(fileIn);
+                object = in.readObject();
+                in.close();
+            }
 
         } catch (IOException i) {
             i.printStackTrace();

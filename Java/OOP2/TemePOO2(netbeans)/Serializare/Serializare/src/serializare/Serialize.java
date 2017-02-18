@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package serializare;
 
 import java.io.*;
@@ -12,7 +8,7 @@ public class Serialize {
     public static void SerializeObject(Object object, String fileName) {
 
         try {
-            File yourFile = new File(fileName + ".ser");
+            File yourFile = new File(fileName + ".bin");
 
             if (yourFile.exists()) {
                 yourFile.delete();
