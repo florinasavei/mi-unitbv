@@ -11,7 +11,7 @@ public class Deserializare {
 
         try {
 
-            File yourFile = new File(fileName + ".ser");
+            File yourFile = new File(fileName + ".bin");
             if (!yourFile.exists()) {
                 return null;
             }
@@ -31,7 +31,7 @@ public class Deserializare {
             return  null;
         }
 
-        System.out.println("Deserializat...\n");
+        System.out.println("Deserializare...\n");
         return object;
     }
 

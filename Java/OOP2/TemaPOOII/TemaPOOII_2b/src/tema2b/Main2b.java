@@ -1,11 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package tema2b;
-
-
 /**
  * 					Alternativa pentru Tema 2
  * 
@@ -34,7 +26,7 @@ package tema2b;
  *
  */
 
-import java.util.Scanner;
+package tema2b;
 
 import serializare.*;
 

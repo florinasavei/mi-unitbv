@@ -12,7 +12,7 @@ public class Serializare {
     public static void ObiectSerializare(Object object, String fileName) {
 
         try {
-		            File yourFile = new File(fileName + ".ser");
+		            File yourFile = new File(fileName + ".bin");
 		
 		            if (yourFile.exists()) {
 		                yourFile.delete();
@@ -25,7 +25,7 @@ public class Serializare {
 		            out.writeObject(object);
 		            out.close();
 		            fileOut.close();
-		            System.out.printf("Datele salvate in " + fileName + ".ser\n");
+		            System.out.printf("Informatiile au fost salvae in " + fileName + ".bin\n");
         } catch (IOException i) {
             i.printStackTrace();
         }

@@ -1,11 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package tema1;
-
-
 /**
  * 
  * 								 1 POO 2
@@ -41,15 +33,17 @@ package tema1;
  *
  */
 
+package tema1;
 
 import serializare.*;
 
 import java.util.*;
 
+
 public class Main1 {
 
     public static void main(String[] args) {
-        boolean meniu = true;
+        boolean meniu = true;  //afiseaza sau ascunde meniul
         Scanner scanner = new Scanner(System.in);
         List<Student> listaStudenti = new ArrayList<Student>();
 
