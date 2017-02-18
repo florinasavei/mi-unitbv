@@ -30,7 +30,7 @@ public class Deserialize {
             return  null;
         }
 
-        System.out.println("Deserialized...\n");
+        System.out.println("Deserializare...\n");
         return object;
     }
 

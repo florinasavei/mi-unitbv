@@ -11,20 +11,20 @@ import java.util.regex.Pattern;
 
 public class Main02b {
 
-    static List<User> listUsers;
-    static List<Product> listProducts;
+    static List<Utilizator> listaUtilizatori;
+    static List<Produs> listaProduse;
 
     public static void main(String[] args) {
         boolean menu = true;
         Scanner scanner = new Scanner(System.in);
 
         if (!LoadUserListFromFile())
-            listUsers = new ArrayList<User>();
+            listaUtilizatori = new ArrayList<Utilizator>();
         else
             PrintUserList();
 
         if (!LoadProductListFromFile())
-            listProducts = new ArrayList<Product>();
+            listaProduse = new ArrayList<Produs>();
         else
             PrintProductList();
 
@@ -55,19 +55,19 @@ public class Main02b {
                     System.out.println("2 - Cumparator.");
 
                     int type = Integer.parseInt(scanner.nextLine());
-                    User user;
+                    Utilizator user;
 
                     if (type == 1)
-                        user = new Vendor();
+                        user = new Vanzator();
                     else if (type == 2)
-                        user = new Buyer();
+                        user = new Cumparator();
                     else {
                         System.out.println("Optiunea nu este valida.");
                         user = null;
                     }
 
                     if (user != null) {
-                        listUsers.add(User.IntroducereUser(user));
+                        listaUtilizatori.add(Utilizator.IntroducereUser(user));
                         RefreshUserList();
                     }
                     break;
@@ -98,8 +98,8 @@ public class Main02b {
 
     public static void SaveUserListToFile() {
         try {
-            if (listUsers.size() != 0)
-                Serialize.SerializeObject(listUsers, "users");
+            if (listaUtilizatori.size() != 0)
+                Serialize.SerializeObject(listaUtilizatori, "users");
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
@@ -112,7 +112,7 @@ public class Main02b {
             Object deserialized = Deserialize.DeserializeObject("users");
 
             if (deserialized != null) {
-                listUsers = (List<User>) deserialized;
+                listaUtilizatori = (List<Utilizator>) deserialized;
             } else {
                 System.out.println("Nu exista niciun user.\n");
                 return false;
@@ -131,8 +131,8 @@ public class Main02b {
 
     public static void SaveProductListToFile() {
         try {
-            if (listProducts.size() != 0)
-                Serialize.SerializeObject(listProducts, "products");
+            if (listaProduse.size() != 0)
+                Serialize.SerializeObject(listaProduse, "products");
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
@@ -145,7 +145,7 @@ public class Main02b {
             Object deserialized = Deserialize.DeserializeObject("products");
 
             if (deserialized != null) {
-                listProducts = (List<Product>) deserialized;
+                listaProduse = (List<Produs>) deserialized;
             } else {
                 System.out.println("Nu exista niciun produs.\n");
                 return false;
@@ -164,10 +164,10 @@ public class Main02b {
         System.out.format("+-----------------+-----------------+------------------+-----------------+----------------------+%n");
         System.out.format("| Nume            | Prenume         | Username         | Tip User        | Email                |%n");
         System.out.format("+-----------------+-----------------+------------------+-----------------+----------------------+%n");
-        for (User d : listUsers) {
-            if(d instanceof Buyer)
+        for (Utilizator d : listaUtilizatori) {
+            if(d instanceof Cumparator)
             System.out.format(leftAlignFormat, d.Nume, d.Prenume, d.Username, "Cumparator", d.Email);
-            if(d instanceof Vendor)
+            if(d instanceof Vanzator)
                 System.out.format(leftAlignFormat, d.Nume, d.Prenume, d.Username, "Vanzator", d.Email);
         }
         System.out.format("+-----------------+-----------------+------------------+-----------------+----------------------+%n");
@@ -182,7 +182,7 @@ public class Main02b {
         System.out.format("+--------+-----------------+------------------+----------------+---------------+%n");
         System.out.format("| Id     | Nume            | Vanzator         | Pret           | Cantitate     |%n");
         System.out.format("+--------+-----------------+------------------+----------------+---------------+%n");
-        for (Product p : listProducts) {
+        for (Produs p : listaProduse) {
             System.out.format(leftAlignFormat, p.getId(), p.Nume, p.getVendor(),p.Pret, p.Cantitate);
         }
         System.out.format("+--------+-----------------+------------------+----------------+---------------+%n");
@@ -198,7 +198,7 @@ public class Main02b {
         System.out.format("+--------+-----------------+------------------+----------------+---------------+%n");
         System.out.format("| Id     | Nume            | Vanzator         | Pret           | Cantitate     |%n");
         System.out.format("+--------+-----------------+------------------+----------------+---------------+%n");
-        for (Product p : listProducts) {
+        for (Produs p : listaProduse) {
             if (p.Cantitate > 0)
                 System.out.format(leftAlignFormat, p.getId(), p.Nume, p.getVendor(), p.Pret, p.Cantitate);
         }
@@ -209,7 +209,7 @@ public class Main02b {
 
     public static boolean IsUsernameValid(String username) {
 
-        for (User d : listUsers)
+        for (Utilizator d : listaUtilizatori)
             if (d.Username.equals(username))
                 return false;
 
@@ -218,7 +218,7 @@ public class Main02b {
 
     public static boolean DoesProductExists(String name) {
 
-        for (Product p : listProducts)
+        for (Produs p : listaProduse)
             if (p.Nume.toLowerCase().equals(name.toLowerCase()))
                 return true;
 
@@ -237,16 +237,16 @@ public class Main02b {
 
         boolean found = false;
 
-        for (User d : listUsers) {
+        for (Utilizator d : listaUtilizatori) {
             if (d.Username.equals(username) &&
                     d.Password.equals(password)) {
 
                 System.out.println("Autentificare cu succes.\n");
                 found = true;
 
-                if (d instanceof Vendor)
+                if (d instanceof Vanzator)
                     VendorMenu(d);
-                else if (d instanceof Buyer)
+                else if (d instanceof Cumparator)
                     BuyerMenu(d);
             }
         }
@@ -257,7 +257,7 @@ public class Main02b {
             return false;
     }
 
-    public static void VendorMenu(User user) {
+    public static void VendorMenu(Utilizator user) {
 
         boolean menu = true;
         Scanner scanner = new Scanner(System.in);
@@ -279,7 +279,7 @@ public class Main02b {
                     if(DoesProductExists(newProduct))
                     {
                         System.out.println("Produsul exista deja, adaugati o cantitate la cel deja existent: ");
-                        for (Product p : listProducts) {
+                        for (Produs p : listaProduse) {
                             if (p.Nume.toLowerCase().equals(newProduct.toLowerCase()))
                             {
                                 p.Cantitate += Integer.parseInt(scanner.nextLine());
@@ -288,17 +288,17 @@ public class Main02b {
                     }
                     else
                     {
-                    listProducts.add(Product.InsertProduct(user.Username, newProduct));
+                    listaProduse.add(Produs.InsertProduct(user.Username, newProduct));
                     }
                     RefreshProductList();
                     break;
                 case 2:
-                    Product.ViewProductsByVendor(user.Username);
+                    Produs.ViewProductsByVendor(user.Username);
                     break;
                 case 3:
-                    for (User u : listUsers) {
+                    for (Utilizator u : listaUtilizatori) {
                         if (u.Username.equals(user.Username))
-                            u.Password = User.ChangePassword();
+                            u.Password = Utilizator.ChangePassword();
                     }
                     break;
                 case 4:
@@ -313,7 +313,7 @@ public class Main02b {
 
     }
 
-    public static void BuyerMenu(User user) {
+    public static void BuyerMenu(Utilizator user) {
 
         boolean menu = true;
         Scanner scanner = new Scanner(System.in);
@@ -335,12 +335,12 @@ public class Main02b {
                 case 2:
                     System.out.println("Introduceti codul produsului cautat.");
                     int productCode = Integer.parseInt(scanner.nextLine());
-                    Product.GetProductById(productCode);
+                    Produs.GetProductById(productCode);
                     break;
                 case 3:
                     System.out.println("Introduceti numele produsului cautat.");
                     String productName = scanner.nextLine();
-                    Product.GetProductByName(productName);
+                    Produs.GetProductByName(productName);
                     break;
                 case 4:
                     System.out.println("Introduceti codul produsului pe care doriti sa il cumparati.");
@@ -349,7 +349,7 @@ public class Main02b {
                     System.out.println("Introduceti cantitatea dorita.");
                     int buyQuantity = Integer.parseInt(scanner.nextLine());
 
-                    if (Product.BuyProduct(buyCode, buyQuantity))
+                    if (Produs.BuyProduct(buyCode, buyQuantity))
                         RefreshProductList();
 
                     break;

@@ -5,7 +5,5 @@
  */
 package problema2b;
 
-
-public class Vendor extends User {
-
+public class Cumparator extends Utilizator{
 }

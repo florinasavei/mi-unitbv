@@ -1,19 +1,14 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package problema2b;
 
 
 import java.io.Serializable;
 import java.util.Scanner;
 
-public class User implements Serializable {
+public class Utilizator implements Serializable {
 
     public String Nume, Prenume, Email, Username, Password;
 
-    public static User IntroducereUser(User user) {
+    public static Utilizator IntroducereUser(Utilizator user) {
 
         Scanner reader = new Scanner(System.in);
         boolean correct = false;

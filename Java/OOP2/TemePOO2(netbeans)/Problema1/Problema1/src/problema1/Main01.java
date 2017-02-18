@@ -11,9 +11,10 @@ import serializare.*;
 
 
 public class Main01 {
-
+public static int nrStudenti=0;
     public static void main(String[] args) {
-        boolean menu = true;
+        
+        boolean afisareMeniu = true;
         Scanner scanner = new Scanner(System.in);
         List<Student> listaStudenti = new ArrayList<Student>();
 
@@ -27,40 +28,30 @@ public class Main01 {
         }
 
         do {
+            
+            Meniu meniu = new Meniu();
+            meniu.AfisareMeniu();
 
-            System.out.println("Alegeti o optiune:");
-            System.out.println("-------------------------\n");
-            System.out.println("1 - Introduceti un student.");
-            System.out.println("2 - Introduceti note pentru un student.");
-            System.out.println("3 - Sortare studenti dupa anul de nastere.");
-            System.out.println("4 - Afisare studenti cu numar de Vodafone.");
-            System.out.println("5 - Afisare studenti nascuti de Craciun.");
-            System.out.println("6 - Afisare studenti care au peste 5 la materia POO2.");
-            System.out.println("7 - Afisare studenti care au restante, impreuna cu lista restantelor.");
-            System.out.println("8 - Afisare media notelor pentru studentul introdus.");
-            System.out.println("9 - Printare lista curenta studenti.");
-            System.out.println("10 - Inchidere aplicatie. (Pentru a salva lista)");
+            int optiuneMeniu = Integer.parseInt(scanner.nextLine());
 
-            int choice = Integer.parseInt(scanner.nextLine());
-
-            switch (choice) {
+            switch (optiuneMeniu) {
                 case 1:
                     listaStudenti.add(InsertStudent());
                     break;
                 case 2:
                     System.out.println("Introduceti id-ul studentului pentru care vreti sa introduceti note:");
-                    int id = Integer.parseInt(scanner.nextLine());
+                    int idCitit = Integer.parseInt(scanner.nextLine());
                     boolean found = false;
-                    for (Student d : listaStudenti) {
-                        if (d.identifier == id) {
-                            d.IntroducereNote();
+                    for (Student stud : listaStudenti) {
+                        if (stud.identificator == idCitit) {
+                            stud.IntroducereNote();
                             found = true;
                             break;
                         }
                     }
 
                     if (!found)
-                        System.out.println("Studentul cu respectivul id nu exista.\n");
+                        System.out.println("Nu exista nici un student cu id-ul "+idCitit+"\n");
 
                     break;
                 case 3:
@@ -76,10 +67,10 @@ public class Main01 {
 
                     PrintStudentList(listaStudentiCopy);
                     break;
-                case 4:
+                case 4:  //Are numat de vodafone(incepe cu *73)
                     boolean foundVodafone = false;
                     for (Student d : listaStudenti) {
-                        if (d.HasVodafone()) {
+                        if (d.areVodafone()) {
                             System.out.println(d.nume + " " + d.prenume + " are Vodafone.");
                             foundVodafone = true;
                         }
@@ -93,7 +84,7 @@ public class Main01 {
                 case 5:
                     boolean foundChristmas = false;
                     for (Student d : listaStudenti) {
-                        if (d.IsBornChristmas()) {
+                        if (d.eNascutDeCraciun()) {
                             System.out.println(d.nume + " " + d.prenume + " este nascut de Craciun.");
                             foundChristmas = true;
                         }
@@ -105,14 +96,13 @@ public class Main01 {
                         System.out.println("Nu exista studenti nascuti de Craciun.\n");
 
                     break;
-                case 6:
+                case 6: //afisare studenti care au peste 5 la POO2
                     boolean foundPOOOver5 = false;
-                    for (Student d : listaStudenti) {
-                        for (Nota n : d.listaNote) {
+                    for (Student stud : listaStudenti) {
+                        for (Nota n : stud.listaNote) {
 
-                            if (n.materie.equals("POO2") &&
-                                    n.nota > 5)
-                                System.out.println(d.nume + " " + d.prenume + " are nota peste 5 la POO2 pe data de " + n.data);
+                            if (n.materie.equals("POO2") && n.nota > 5)
+                                System.out.println(stud.nume + " " + stud.prenume + " are nota peste 5 la POO2 pe data de " + n.data);
                             foundPOOOver5 = true;
                         }
                     }
@@ -137,7 +127,7 @@ public class Main01 {
 
                         if (foundFailed) {
                             System.out.println("\n\nStudentul " + d.nume + " " + d.prenume + " are restante.");
-                            System.out.println("====================================");
+                            System.out.println("______________________________________________");
                             for (Nota f : listFailed) {
                                 System.out.println("Materia: " + f.materie + " - " + "Nota: " + f.nota + ".");
                             }
@@ -157,7 +147,7 @@ public class Main01 {
                     boolean foundStudent = false;
                     for (Student d : listaStudenti) {
                         if (d.nume.equals(studentName)) {
-                            d.CalculateMeanOver8(d);
+                            d.mediaNotelorPeste8(d);
                             foundStudent = true;
                         }
                     }
@@ -173,14 +163,14 @@ public class Main01 {
                     break;
                 case 10:
                     System.out.println("Aplicatia se va inchide.");
-                    menu = false;
+                    afisareMeniu = false;
                     break;
                 default:
                     System.out.println("Introduceti o optiune valida.");
                     break;
 
             }
-        } while (menu);
+        } while (afisareMeniu);
 
         if (listaStudenti.size() != 0)
             Serialize.SerializeObject(listaStudenti, "studenti");
@@ -200,8 +190,10 @@ public class Main01 {
     }
 
     private static void PrintStudentList(List<Student> list) {
-        for (Student d : list) {
-            System.out.println(d.afisareStudent());
+        for (Student stud : list) {
+            System.out.println(stud.afisareStudent());
+            nrStudenti++;
         }
+        System.out.println("Au fost afisati "+nrStudenti+" studenti \n" );
     }
 }

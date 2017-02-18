@@ -10,7 +10,7 @@ import java.io.Serializable;
 import java.util.Random;
 import java.util.Scanner;
 
-public class Product implements Serializable {
+public class Produs implements Serializable {
     private int identifier;
     private String Username;
     int Cantitate;
@@ -29,17 +29,17 @@ public class Product implements Serializable {
         this.Username = x;
     }
 
-    public Product() {
+    public Produs() {
         Random ran = new Random();
         this.identifier = 100000 + ran.nextInt(900000);
     }
 
-    public static Product InsertProduct(String username, String name) {
+    public static Produs InsertProduct(String username, String name) {
 
         Scanner reader = new Scanner(System.in);
         boolean correct = false;
 
-        Product product = new Product();
+        Produs product = new Produs();
         product.setVendor(username);
 
         product.Nume = name;
@@ -60,7 +60,7 @@ public class Product implements Serializable {
         System.out.format("+--------+-----------------+----------------+---------------+%n");
         System.out.format("| Id     | Nume            | Pret           | Cantitate     |%n");
         System.out.format("+--------+-----------------+----------------+---------------+%n");
-        for (Product p : Main02b.listProducts) {
+        for (Produs p : Main02b.listaProduse) {
             if (p.Username.equals(username))
                 System.out.format(leftAlignFormat, p.getId(), p.Nume, p.Pret, p.Cantitate);
         }
@@ -77,7 +77,7 @@ public class Product implements Serializable {
         System.out.format("+--------+-----------------+------------------+----------------+---------------+%n");
         System.out.format("| Id     | Nume            | Vanzator         | Pret           | Cantitate     |%n");
         System.out.format("+--------+-----------------+------------------+----------------+---------------+%n");
-        for (Product p : Main02b.listProducts) {
+        for (Produs p : Main02b.listaProduse) {
             if (p.getId().equals(id))
                 System.out.format(leftAlignFormat, p.getId(), p.Nume, p.Username, p.Pret, p.Cantitate);
         }
@@ -94,7 +94,7 @@ public class Product implements Serializable {
         System.out.format("+--------+-----------------+------------------+----------------+---------------+%n");
         System.out.format("| Id     | Nume            | Vanzator         | Pret           | Cantitate     |%n");
         System.out.format("+--------+-----------------+------------------+----------------+---------------+%n");
-        for (Product p : Main02b.listProducts) {
+        for (Produs p : Main02b.listaProduse) {
             if (p.Nume.toLowerCase().contains(name.toLowerCase()))
                 System.out.format(leftAlignFormat, p.getId(), p.Nume, p.Username, p.Pret, p.Cantitate);
         }
@@ -107,7 +107,7 @@ public class Product implements Serializable {
     public static boolean BuyProduct(int id, int quantity) {
         boolean bought = false;
 
-        for (Product p : Main02b.listProducts) {
+        for (Produs p : Main02b.listaProduse) {
             if (p.getId().equals(id)) {
                 if (quantity <= p.Cantitate) {
                     p.Cantitate -= quantity;

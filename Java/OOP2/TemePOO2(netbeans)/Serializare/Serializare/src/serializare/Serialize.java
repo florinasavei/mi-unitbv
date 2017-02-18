@@ -12,6 +12,7 @@ public class Serialize {
 
             if (yourFile.exists()) {
                 yourFile.delete();
+                System.out.println("Fisierul " + fileName + ".bin a fost sters\n");
             }
 
             yourFile.createNewFile(); // if file already exists will do nothing
@@ -21,7 +22,7 @@ public class Serialize {
             out.writeObject(object);
             out.close();
             fileOut.close();
-            System.out.printf("Serialized data is saved in " + fileName + ".ser\n");
+            System.out.printf("Datele au fost salvate in fisierul " + fileName + ".bin\n");
         } catch (IOException i) {
             i.printStackTrace();
         }

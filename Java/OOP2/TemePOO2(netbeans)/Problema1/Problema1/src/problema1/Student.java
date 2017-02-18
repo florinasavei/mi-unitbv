@@ -9,13 +9,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 import java.io.Serializable;
+import static problema1.Main01.nrStudenti;
 
 public class Student implements Serializable {
 
-    //<editor-fold desc="#properties">
 
-    private static int id = 1;
-    int identifier;
+    public static int id = 1;
+    int identificator=nrStudenti;
     String nume;
     String prenume;
     String CNP;
@@ -24,14 +24,10 @@ public class Student implements Serializable {
     int nrNote = 0;
     List<Nota> listaNote;
 
-    //</editor-fold>
 
-    //<editor-fold desc="#constructors">
-
-    public Student() {
+    public Student() { //constructor
         listaNote = new ArrayList<Nota>();
-        this.identifier = id;
-        id++;
+        this.identificator++;
     }
 
     //</editor-fold>
@@ -41,7 +37,7 @@ public class Student implements Serializable {
         Scanner reader = new Scanner(System.in);
         Student student = new Student();
 
-        System.out.println("Introduceti numele studentului: ");
+        System.out.println("Introduceti numele de familie al studentului: ");
         student.nume = reader.nextLine();
 
         System.out.println("Introduceti prenumele studentului: ");
@@ -59,27 +55,27 @@ public class Student implements Serializable {
 
     public void IntroducereNote() {
 
-        Scanner reader = new Scanner(System.in);
+        Scanner input = new Scanner(System.in);
 
         System.out.println("Introduceti numarul de note pe care doriti sa le introduceti: ");
-        int grades = Integer.parseInt(reader.nextLine());
+        int note = Integer.parseInt(input.nextLine());
 
-        for (int i = 0; i < grades; i++) {
-            Nota grade = new Nota();
+        for (int i = 0; i < note; i++) {
+            Nota notaStudent = new Nota();
 
             System.out.println("Introduceti materia:");
-            grade.materie = reader.nextLine();
+            notaStudent.materie = input.nextLine();
 
             System.out.println("Introduceti nota:");
-            grade.nota = Double.parseDouble(reader.nextLine());
+            notaStudent.nota = Double.parseDouble(input.nextLine());
 
             System.out.println("Introduceti data:");
-            grade.data = reader.nextLine();
+            notaStudent.data = input.nextLine();
 
-            this.listaNote.add(grade);
+            this.listaNote.add(notaStudent);
         }
 
-        this.nrNote += grades;
+        this.nrNote += note;
     }
 
     public String GetAnNastere() {
@@ -91,7 +87,7 @@ public class Student implements Serializable {
 
     }
 
-    public boolean HasVodafone() {
+    public boolean areVodafone() { 
         if (this.telefon.substring(1, 3).equals("72") ||
                 this.telefon.substring(1, 3).equals("73"))
             return true;
@@ -99,14 +95,14 @@ public class Student implements Serializable {
         return false;
     }
 
-    public boolean IsBornChristmas() {
+    public boolean eNascutDeCraciun() {
         if (this.CNP.substring(3, 7).equals("1224"))
             return true;
 
         return false;
     }
 
-    public void CalculateMeanOver8(Student student){
+    public void mediaNotelorPeste8(Student student){
 
         double sum = 0;
         int count =0;
@@ -120,8 +116,8 @@ public class Student implements Serializable {
             }
 
         }
-        double mean = sum/count;
-        System.out.println("Media notelor peste 8 ale studentului "+student.nume+" este: "+mean);
+        double medie = sum/count;
+        System.out.println("Media notelor peste 8 ale studentului "+student.nume+" este: "+medie);
     }
 
     public String afisareStudent() {
@@ -134,7 +130,7 @@ public class Student implements Serializable {
         if (note.equals(""))
             note = "Studentul nu are note.\n";
 
-        return this.identifier + ". " +
+        return this.identificator + ". " +
                 this.nume +
                 " " +
                 this.prenume +
@@ -145,9 +141,9 @@ public class Student implements Serializable {
                 " Telefon: " +
                 this.telefon +
                 "\n" +
-                "== Note =================================\n" +
+                "Note:\n" +
                 note +
-                "=========================================\n";
+                "______________________________________________\n";
     }
     
    
