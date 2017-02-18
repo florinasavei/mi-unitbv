@@ -124,7 +124,7 @@ public class Student implements Serializable {
         System.out.println("Media notelor peste 8 ale studentului "+student.nume+" este: "+mean);
     }
 
-    public String toString() {
+    public String afisareStudent() {
 
         String note = "";
         for (Nota d : listaNote) {
@@ -149,4 +149,6 @@ public class Student implements Serializable {
                 note +
                 "=========================================\n";
     }
+    
+   
 }

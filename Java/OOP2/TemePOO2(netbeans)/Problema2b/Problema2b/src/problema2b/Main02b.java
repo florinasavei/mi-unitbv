@@ -9,7 +9,7 @@ import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class Application {
+public class Main02b {
 
     static List<User> listUsers;
     static List<Product> listProducts;

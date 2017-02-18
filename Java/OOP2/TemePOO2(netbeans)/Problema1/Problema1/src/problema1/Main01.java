@@ -5,8 +5,9 @@
  */
 package problema1;
 
-import serializare.*;
+
 import java.util.*;
+import serializare.*;
 
 
 public class Main01 {
@@ -149,7 +150,7 @@ public class Main01 {
                     if (!foundFailed)
                         System.out.println("Nu exista studenti care au peste 5 la materia POO2.\n");
                     break;
-                case 8:
+                case 8: ///
                     System.out.println("Introduceti studentul pentru care vreti sa calculati media notelor peste 8:");
                     String studentName = scanner.nextLine();
 
@@ -192,7 +193,7 @@ public class Main01 {
         Student student = Student.IntroducereStudent();
 
         System.out.println("Ati introdus urmatorul student: ");
-        System.out.println(student.toString());
+        System.out.println(student.afisareStudent());
         System.out.println("===============================\n");
 
         return student;
@@ -200,7 +201,7 @@ public class Main01 {
 
     private static void PrintStudentList(List<Student> list) {
         for (Student d : list) {
-            System.out.println(d.toString());
+            System.out.println(d.afisareStudent());
         }
     }
 }
