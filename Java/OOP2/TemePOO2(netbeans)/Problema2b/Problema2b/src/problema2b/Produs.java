@@ -53,7 +53,7 @@ public class Produs implements Serializable {
         return product;
     }
 
-    public static void ViewProductsByVendor(String username) {
+    public static void afisareProduseVanzator(String username) {
         System.out.println("LISTA DE PRODUSE PENTRU " + username + ":");
         String leftAlignFormat = "| %-2d | %-15s | %-14.2f | %-13d |%n";
 

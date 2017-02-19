@@ -14,7 +14,6 @@ import static problema1.Main01.nrStudenti;
 public class Student implements Serializable {
 
 
-    public static int id = 1;
     int identificator=nrStudenti;
     String nume;
     String prenume;

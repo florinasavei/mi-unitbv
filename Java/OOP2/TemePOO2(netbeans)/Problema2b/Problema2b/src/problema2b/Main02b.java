@@ -15,51 +15,49 @@ public class Main02b {
     static List<Produs> listaProduse;
 
     public static void main(String[] args) {
-        boolean menu = true;
+        boolean afisareMeniu = true;
         Scanner scanner = new Scanner(System.in);
 
-        if (!LoadUserListFromFile())
+        if (!incarcaListaUtilizatoriDinFisier())
             listaUtilizatori = new ArrayList<Utilizator>();
         else
-            PrintUserList();
+            afisareListaUtilizatori();
 
-        if (!LoadProductListFromFile())
+        if (!incarcaListaProduseDinFisier())
             listaProduse = new ArrayList<Produs>();
         else
-            PrintProductList();
+            afisareListaProduse(); 
 
         do {
-            System.out.println("1 - Autentificare.");
-            System.out.println("2 - Creare cont nou.");
-            System.out.println("3 - Lista useri.");
-            System.out.println("4 - Inchidere Aplicatie.");
+          
+            Meniu meniuPrincipal = new Meniu();
+            meniuPrincipal.afisareMeniuPrincipal();
 
-            int choice = Integer.parseInt(scanner.nextLine());
+            int optiune = Integer.parseInt(scanner.nextLine());
 
-            switch (choice) {
+            switch (optiune) {
                 case 1:
                     System.out.println("Username:");
                     String username = scanner.nextLine();
 
-                    System.out.println("Password:");
+                    System.out.println("Parola:");
                     String password = scanner.nextLine();
 
-                    if (!Authentify(username, password))
+                    if (!Autentificare(username, password))
                         System.out.println("Autentificare esuata.");
 
                     break;
                 case 2:
                     System.out.println("Alegeti tipul de utilizator:");
-                    System.out.println("========================\n");
                     System.out.println("1 - Vanzator.");
                     System.out.println("2 - Cumparator.");
 
-                    int type = Integer.parseInt(scanner.nextLine());
+                    int tipUtilizator = Integer.parseInt(scanner.nextLine());
                     Utilizator user;
 
-                    if (type == 1)
+                    if (tipUtilizator == 1)
                         user = new Vanzator();
-                    else if (type == 2)
+                    else if (tipUtilizator == 2)
                         user = new Cumparator();
                     else {
                         System.out.println("Optiunea nu este valida.");
@@ -68,48 +66,48 @@ public class Main02b {
 
                     if (user != null) {
                         listaUtilizatori.add(Utilizator.IntroducereUser(user));
-                        RefreshUserList();
+                        reincarcaListaUtilizatori();
                     }
                     break;
                 case 3:
-                    PrintUserList();
+                    afisareListaUtilizatori();
                     break;
                 case 4:
                     System.out.println("Aplicatia se va inchide.");
-                    menu = false;
+                    afisareMeniu = false;
                     break;
                 default:
                     System.out.println("Introduceti o optiune valida.");
                     break;
             }
         }
-        while (menu);
+        while (afisareMeniu);
 
-        SaveUserListToFile();
-        SaveProductListToFile();
+        salveazaListaUtilizatoriInFisier();
+        salveazaListaProuseinFisier();
 
         scanner.close();
     }
 
-    public static void RefreshUserList() {
-        SaveUserListToFile();
-        LoadUserListFromFile();
+    public static void reincarcaListaUtilizatori() {
+        salveazaListaUtilizatoriInFisier();
+        incarcaListaUtilizatoriDinFisier();
     }
 
-    public static void SaveUserListToFile() {
+    public static void salveazaListaUtilizatoriInFisier() {
         try {
             if (listaUtilizatori.size() != 0)
-                Serialize.SerializeObject(listaUtilizatori, "users");
+                Serializare.obiectSerializat(listaUtilizatori, "utilizatori");
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
     }
 
-    public static boolean LoadUserListFromFile() {
+    public static boolean incarcaListaUtilizatoriDinFisier() {
 
         try {
 
-            Object deserialized = Deserialize.DeserializeObject("users");
+            Object deserialized = Deserializare.obiectDeserializat("utilizatori");
 
             if (deserialized != null) {
                 listaUtilizatori = (List<Utilizator>) deserialized;
@@ -124,25 +122,25 @@ public class Main02b {
         return true;
     }
 
-    public static void RefreshProductList() {
-        SaveProductListToFile();
-        LoadProductListFromFile();
+    public static void reincarvaListaProduse() {
+        salveazaListaProuseinFisier();
+        incarcaListaProduseDinFisier();
     }
 
-    public static void SaveProductListToFile() {
+    public static void salveazaListaProuseinFisier() {
         try {
             if (listaProduse.size() != 0)
-                Serialize.SerializeObject(listaProduse, "products");
+                Serializare.obiectSerializat(listaProduse, "produse");
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
     }
 
-    public static boolean LoadProductListFromFile() {
+    public static boolean incarcaListaProduseDinFisier() {
 
         try {
 
-            Object deserialized = Deserialize.DeserializeObject("products");
+            Object deserialized = Deserializare.obiectDeserializat("produse");
 
             if (deserialized != null) {
                 listaProduse = (List<Produs>) deserialized;
@@ -157,7 +155,7 @@ public class Main02b {
         return true;
     }
 
-    private static void PrintUserList() {
+    private static void afisareListaUtilizatori() {
         System.out.println("LISTA USERI:");
         String leftAlignFormat = "| %-15s | %-15s | %-16s | %-15s | %-20s |%n";
 
@@ -175,7 +173,7 @@ public class Main02b {
         System.out.println("\n");
     }
 
-    private static void PrintProductList() {
+    private static void afisareListaProduse() {
         System.out.println("LISTA DE PRODUSE:");
         String leftAlignFormat = "| %-2d | %-15s | %-16s | %-14.2f | %-13d |%n";
 
@@ -207,7 +205,7 @@ public class Main02b {
         System.out.println("\n");
     }
 
-    public static boolean IsUsernameValid(String username) {
+    public static boolean validareUsername(String username) {
 
         for (Utilizator d : listaUtilizatori)
             if (d.Username.equals(username))
@@ -216,7 +214,7 @@ public class Main02b {
         return true;
     }
 
-    public static boolean DoesProductExists(String name) {
+    public static boolean validareProdus(String name) {
 
         for (Produs p : listaProduse)
             if (p.Nume.toLowerCase().equals(name.toLowerCase()))
@@ -228,12 +226,12 @@ public class Main02b {
     public static final Pattern VALID_EMAIL_ADDRESS_REGEX =
             Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
 
-    public static boolean IsEmailValid(String emailStr) {
+    public static boolean validareEmail(String emailStr) {
         Matcher matcher = VALID_EMAIL_ADDRESS_REGEX.matcher(emailStr);
         return matcher.find();
     }
 
-    public static boolean Authentify(String username, String password) {
+    public static boolean Autentificare(String username, String password) {
 
         boolean found = false;
 
@@ -245,7 +243,7 @@ public class Main02b {
                 found = true;
 
                 if (d instanceof Vanzator)
-                    VendorMenu(d);
+                    meniuVanzator(d);
                 else if (d instanceof Cumparator)
                     BuyerMenu(d);
             }
@@ -257,17 +255,16 @@ public class Main02b {
             return false;
     }
 
-    public static void VendorMenu(Utilizator user) {
+    public static void meniuVanzator(Utilizator user) {
 
         boolean menu = true;
         Scanner scanner = new Scanner(System.in);
         System.out.println("Bine ai venit " + user.Nume + " " + user.Prenume + "!\n");
 
         do {
-            System.out.println("1 - Adaugare produs.");
-            System.out.println("2 - Vizualizare produse proprii.");
-            System.out.println("3 - Schimbare parola.");
-            System.out.println("4 - Deloghare.");
+            
+            Meniu meniuVanzator=new Meniu();
+            meniuVanzator.afisareMeniuVanzator();
 
             int choice = Integer.parseInt(scanner.nextLine());
 
@@ -276,7 +273,7 @@ public class Main02b {
                     System.out.println("Introduceti numele produslui: ");
                     String newProduct = scanner.nextLine();
 
-                    if(DoesProductExists(newProduct))
+                    if(validareProdus(newProduct))
                     {
                         System.out.println("Produsul exista deja, adaugati o cantitate la cel deja existent: ");
                         for (Produs p : listaProduse) {
@@ -290,10 +287,10 @@ public class Main02b {
                     {
                     listaProduse.add(Produs.InsertProduct(user.Username, newProduct));
                     }
-                    RefreshProductList();
+                    reincarvaListaProduse();
                     break;
                 case 2:
-                    Produs.ViewProductsByVendor(user.Username);
+                    Produs.afisareProduseVanzator(user.Username);
                     break;
                 case 3:
                     for (Utilizator u : listaUtilizatori) {
@@ -315,7 +312,7 @@ public class Main02b {
 
     public static void BuyerMenu(Utilizator user) {
 
-        boolean menu = true;
+        boolean meniuCumparare = true;
         Scanner scanner = new Scanner(System.in);
         System.out.println("Bine ai venit " + user.Nume + " " + user.Prenume + "!\n");
 
@@ -350,18 +347,18 @@ public class Main02b {
                     int buyQuantity = Integer.parseInt(scanner.nextLine());
 
                     if (Produs.BuyProduct(buyCode, buyQuantity))
-                        RefreshProductList();
+                        reincarvaListaProduse();
 
                     break;
                 case 5:
                     System.out.println("Vei fi deloghat.\n");
-                    menu = false;
+                    meniuCumparare = false;
                     break;
                 default:
                     System.out.println("Introduceti o optiune valida.\n");
                     break;
             }
-        } while (menu);
+        } while (meniuCumparare);
 
     }
 }

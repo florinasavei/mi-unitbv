@@ -4,7 +4,7 @@ public  class Meniu {
     
     public static void AfisareMeniu(){
              System.out.println("Alegeti o optiune:");
-            System.out.println("-------------------------\n");
+            System.out.println("______________________________________________\n");
             System.out.println("1 - Introduceti un student.");
             System.out.println("2 - Introduceti note pentru un student.");
             System.out.println("3 - Sortare studenti dupa anul de nastere.");

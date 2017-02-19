@@ -2,9 +2,9 @@ package serializare;
 
 import java.io.*;
 
-public class Deserialize {
+public class Deserializare {
 
-    public static Object DeserializeObject(String fileName) {
+    public static Object obiectDeserializat(String fileName) {
 
         Object object;
 
@@ -25,7 +25,6 @@ public class Deserialize {
             i.printStackTrace();
             return null;
         } catch (ClassNotFoundException c) {
-            System.out.println("Object class not found");
             c.printStackTrace();
             return  null;
         }

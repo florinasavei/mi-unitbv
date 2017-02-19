@@ -24,7 +24,7 @@ public class Utilizator implements Serializable {
             System.out.println("Introduceti adresa de email: ");
             String email = reader.nextLine();
 
-            if (Main02b.IsEmailValid(email))
+            if (Main02b.validareEmail(email))
             {
                 user.Email = email;
                 correct= true;
@@ -41,7 +41,7 @@ public class Utilizator implements Serializable {
             System.out.println("Introduceti username-ul: ");
             String username = reader.nextLine();
 
-            if (Main02b.IsUsernameValid(username))
+            if (Main02b.validareUsername(username))
             {
                 user.Username = username;
                 correct= true;

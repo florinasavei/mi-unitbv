@@ -12,21 +12,24 @@ import serializare.*;
 
 public class Main01 {
 public static int nrStudenti=0;
+public static int nrStudentiAfisati=0;
     public static void main(String[] args) {
         
         boolean afisareMeniu = true;
         Scanner scanner = new Scanner(System.in);
         List<Student> listaStudenti = new ArrayList<Student>();
 
-        Object deserialized = Deserialize.DeserializeObject("studenti");
-
+        Object deserialized = Deserializare.obiectDeserializat("studenti");
+        
         if (deserialized != null) {
             listaStudenti = (List<Student>) deserialized;
             PrintStudentList(listaStudenti);
         } else {
             System.out.println("Nu exista nicio inregistrare.\n");
         }
-
+        
+         nrStudenti=listaStudenti.size();
+               
         do {
             
             Meniu meniu = new Meniu();
@@ -138,10 +141,10 @@ public static int nrStudenti=0;
                     System.out.print("\n");
 
                     if (!foundFailed)
-                        System.out.println("Nu exista studenti care au peste 5 la materia POO2.\n");
+                        System.out.println("Nici un student nu are peste 5 la POO2.\n");
                     break;
                 case 8: ///
-                    System.out.println("Introduceti studentul pentru care vreti sa calculati media notelor peste 8:");
+                    System.out.println("Introduceti studentul pt care vreti sa calculati media notelor peste 8:");
                     String studentName = scanner.nextLine();
 
                     boolean foundStudent = false;
@@ -173,27 +176,29 @@ public static int nrStudenti=0;
         } while (afisareMeniu);
 
         if (listaStudenti.size() != 0)
-            Serialize.SerializeObject(listaStudenti, "studenti");
-
+            Serializare.obiectSerializat(listaStudenti, "studenti");
+           
         scanner.close();
     }
 
     private static Student InsertStudent() {
-
+        
+        
         Student student = Student.IntroducereStudent();
-
+        nrStudenti++;
+        System.out.println("______________________________________________\n");
         System.out.println("Ati introdus urmatorul student: ");
         System.out.println(student.afisareStudent());
-        System.out.println("===============================\n");
-
+        System.out.println("______________________________________________\n");
+        
         return student;
     }
 
     private static void PrintStudentList(List<Student> list) {
         for (Student stud : list) {
             System.out.println(stud.afisareStudent());
-            nrStudenti++;
+            nrStudentiAfisati++;
         }
-        System.out.println("Au fost afisati "+nrStudenti+" studenti \n" );
+        System.out.println("\nAu fost afisati "+nrStudentiAfisati+" studenti \n" );
     }
 }
