@@ -17,13 +17,13 @@ public static int nrStudentiAfisati=0;
         
         boolean afisareMeniu = true;
         Scanner scanner = new Scanner(System.in);
-        List<Student> listaStudenti = new ArrayList<Student>();
+        List<Student> listaStudenti = new ArrayList<Student>(); //vector cu obiecte de tip Student
 
-        Object deserialized = Deserializare.obiectDeserializat("studenti");
+        Object deserializat = Deserializare.obiectDeserializat("studenti");
         
-        if (deserialized != null) {
-            listaStudenti = (List<Student>) deserialized;
-            PrintStudentList(listaStudenti);
+        if (deserializat != null) {
+            listaStudenti = (List<Student>) deserializat;
+            afisareListaStudenti(listaStudenti);
         } else {
             System.out.println("Nu exista nicio inregistrare.\n");
         }
@@ -35,13 +35,13 @@ public static int nrStudentiAfisati=0;
             Meniu meniu = new Meniu();
             meniu.AfisareMeniu();
 
-            int optiuneMeniu = Integer.parseInt(scanner.nextLine());
+            char optiuneMeniu = scanner.next().charAt(0);
 
             switch (optiuneMeniu) {
-                case 1:
+                case '1': //intodcure student
                     listaStudenti.add(InsertStudent());
                     break;
-                case 2:
+                case '2': //introducere note
                     System.out.println("Introduceti id-ul studentului pentru care vreti sa introduceti note:");
                     int idCitit = Integer.parseInt(scanner.nextLine());
                     boolean found = false;
@@ -57,20 +57,20 @@ public static int nrStudentiAfisati=0;
                         System.out.println("Nu exista nici un student cu id-ul "+idCitit+"\n");
 
                     break;
-                case 3:
+                case '3': //sortare dupa anul nasterii descrescator (varsta crescatoare)
                     List<Student> listaStudentiCopy = listaStudenti;
                     Collections.sort(listaStudentiCopy, new Comparator<Student>() {
                         @Override
                         public int compare(Student s1, Student s2) {
-                            return s1.birthYear > s2.birthYear ? 1
-                                    : s1.birthYear < s2.birthYear ? -1
+                            return s1.birthYear < s2.birthYear ? 1
+                                    : s1.birthYear > s2.birthYear ? -1
                                     : 0;
                         }
                     });
 
-                    PrintStudentList(listaStudentiCopy);
+                    afisareListaStudenti(listaStudentiCopy);
                     break;
-                case 4:  //Are numat de vodafone(incepe cu *73)
+                case '4':  //Are numat de vodafone(incepe cu *73)
                     boolean foundVodafone = false;
                     for (Student d : listaStudenti) {
                         if (d.areVodafone()) {
@@ -84,38 +84,38 @@ public static int nrStudentiAfisati=0;
                     if (!foundVodafone)
                         System.out.println("Nu exista studenti cu Vodafone.\n");
                     break;
-                case 5:
-                    boolean foundChristmas = false;
+                case 5:  //Afisare studenti nascuti de caraciuni
+                    boolean nascutDeCraciun = false;
                     for (Student d : listaStudenti) {
                         if (d.eNascutDeCraciun()) {
                             System.out.println(d.nume + " " + d.prenume + " este nascut de Craciun.");
-                            foundChristmas = true;
+                            nascutDeCraciun = true;
                         }
                     }
 
                     System.out.print("\n");
 
-                    if (!foundChristmas)
+                    if (!nascutDeCraciun)
                         System.out.println("Nu exista studenti nascuti de Craciun.\n");
 
                     break;
-                case 6: //afisare studenti care au peste 5 la POO2
-                    boolean foundPOOOver5 = false;
+                case '6': //afisare studenti care au peste 5 la POO2
+                    boolean aPromovatPOO2 = false;
                     for (Student stud : listaStudenti) {
                         for (Nota n : stud.listaNote) {
 
                             if (n.materie.equals("POO2") && n.nota > 5)
                                 System.out.println(stud.nume + " " + stud.prenume + " are nota peste 5 la POO2 pe data de " + n.data);
-                            foundPOOOver5 = true;
+                            aPromovatPOO2 = true;
                         }
                     }
 
                     System.out.print("\n");
 
-                    if (!foundPOOOver5)
+                    if (!aPromovatPOO2)
                         System.out.println("Nu exista studenti care au peste 5 la materia POO2.\n");
                     break;
-                case 7:
+                case '7': //aisare restantieri
                     boolean foundFailed = false;
                     for (Student d : listaStudenti) {
 
@@ -143,8 +143,8 @@ public static int nrStudentiAfisati=0;
                     if (!foundFailed)
                         System.out.println("Nici un student nu are peste 5 la POO2.\n");
                     break;
-                case 8: ///
-                    System.out.println("Introduceti studentul pt care vreti sa calculati media notelor peste 8:");
+                case '8': //afisare medie note peste 8
+                    System.out.println("Introduceti  numel de familie al studentului pt care vreti sa calculati media notelor peste 8:");
                     String studentName = scanner.nextLine();
 
                     boolean foundStudent = false;
@@ -161,10 +161,10 @@ public static int nrStudentiAfisati=0;
                         System.out.println("Nu exista student cu acest nume.\n");
 
                     break;
-                case 9:
-                    PrintStudentList(listaStudenti);
+                case '9': //afisare lista studenti
+                    afisareListaStudenti(listaStudenti);
                     break;
-                case 10:
+                case 'x': //iesire din program
                     System.out.println("Aplicatia se va inchide.");
                     afisareMeniu = false;
                     break;
@@ -194,8 +194,8 @@ public static int nrStudentiAfisati=0;
         return student;
     }
 
-    private static void PrintStudentList(List<Student> list) {
-        for (Student stud : list) {
+    private static void afisareListaStudenti(List<Student> listaStudenti) {
+        for (Student stud : listaStudenti) {
             System.out.println(stud.afisareStudent());
             nrStudentiAfisati++;
         }
