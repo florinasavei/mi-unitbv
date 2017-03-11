@@ -1,0 +1,13 @@
+D:\DEV\git\mi-unitbv\CS\Visual\Lab\20170311\App01\App01\App01\bin\Debug\App01.exe.config
+D:\DEV\git\mi-unitbv\CS\Visual\Lab\20170311\App01\App01\App01\bin\Debug\App01.exe
+D:\DEV\git\mi-unitbv\CS\Visual\Lab\20170311\App01\App01\App01\bin\Debug\App01.pdb
+D:\DEV\git\mi-unitbv\CS\Visual\Lab\20170311\App01\App01\App01\obj\Debug\App01.csprojResolveAssemblyReference.cache
+D:\DEV\git\mi-unitbv\CS\Visual\Lab\20170311\App01\App01\App01\obj\Debug\MainWindow.baml
+D:\DEV\git\mi-unitbv\CS\Visual\Lab\20170311\App01\App01\App01\obj\Debug\MainWindow.g.cs
+D:\DEV\git\mi-unitbv\CS\Visual\Lab\20170311\App01\App01\App01\obj\Debug\App.g.cs
+D:\DEV\git\mi-unitbv\CS\Visual\Lab\20170311\App01\App01\App01\obj\Debug\App01_MarkupCompile.cache
+D:\DEV\git\mi-unitbv\CS\Visual\Lab\20170311\App01\App01\App01\obj\Debug\App01.g.resources
+D:\DEV\git\mi-unitbv\CS\Visual\Lab\20170311\App01\App01\App01\obj\Debug\App01.Properties.Resources.resources
+D:\DEV\git\mi-unitbv\CS\Visual\Lab\20170311\App01\App01\App01\obj\Debug\App01.csproj.GenerateResource.Cache
+D:\DEV\git\mi-unitbv\CS\Visual\Lab\20170311\App01\App01\App01\obj\Debug\App01.exe
+D:\DEV\git\mi-unitbv\CS\Visual\Lab\20170311\App01\App01\App01\obj\Debug\App01.pdb
