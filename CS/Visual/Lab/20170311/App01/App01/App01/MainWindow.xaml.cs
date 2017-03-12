@@ -24,5 +24,27 @@ namespace App01
         {
             InitializeComponent();
         }
+
+   private void btnClick(object sender,MouseButtonEventArgs e)
+    {
+        MessageBox.Show("HelloWorld!!!"); 
     }
+
+   private void btn_Click(object sender, RoutedEventArgs e)
+   {
+       //MessageBox.Show("HelloWorld again!!!");
+       btn.Show(((Button) sender).Content.ToString())
+       ;
+   }
+
+   private void Button_Click(object sender, RoutedEventArgs e)
+   {
+
+   }
+
+
+    }
+
+   
 }
+

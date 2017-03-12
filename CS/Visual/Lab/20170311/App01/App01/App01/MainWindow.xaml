@@ -3,13 +3,22 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="MainWindow" Height="350" Width="525">
     <Grid Margin="0,0,-6.6,-19.2">
-        <TextBox VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="50">
+        <TextBox Name="obj01" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="50" Margin="115,105,128,167">
             Hello World!
         </TextBox>
    <!--This is a comment-->
-        <Button Margin="153,242,157,60">
-            Click me
+        <Button x:Name="btn" Click="btn_Click">
+            <Button Content="Click me" MouseUp="btnClick" Click="Button_Click" />
+            <Button.FontWeight>
+                Bold
+            </Button.FontWeight>
+            <Button.Margin>
+                <Thickness>140,20,160,285</Thickness>
+            </Button.Margin>
         </Button>
+
         
+
+
     </Grid>
 </Window>

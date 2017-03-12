@@ -1,0 +1,1 @@
+Acest program comprima sapatiile able
