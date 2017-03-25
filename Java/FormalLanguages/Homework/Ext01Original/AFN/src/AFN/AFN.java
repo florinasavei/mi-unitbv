@@ -70,12 +70,12 @@ public class AFN {
 	}
 
 	public static void main(String args[]) throws FileNotFoundException {
-		Scanner sc = new Scanner(new FileReader("afn"));
+		Scanner sc = new Scanner(new FileReader("afn.txt"));
 		String Q, A, F, q0;
-		Q = sc.nextLine();
-		A = sc.nextLine();
-		q0 = sc.nextLine();
-		F = sc.nextLine();
+		Q = sc.nextLine();  //starile automatului
+		A = sc.nextLine();  //Alfabetul
+		q0 = sc.nextLine(); //starea initiala
+		F = sc.nextLine(); //starile finale
 		int n = Integer.parseInt(sc.nextLine());
 		
 		String[] st1 = new String[n];
@@ -89,9 +89,12 @@ public class AFN {
 			st2[i] = sc.next();
 		}
 
-		System.out.println("Starile sunt urmatoarele: " + Q);
-		System.out.println("Elementele alfabetului sunt: " + A);
+		System.out.println("Starile automatului sunt: " + Q);
+		System.out.println("Starea intiala este: " + q0);
+		System.out.println("Starea finala este: " + F);
+		System.out.println("Alfabetul este: " + A);
 		System.out.println("Introdu cuvantul de verificat:");
+		
 		Scanner sb = new Scanner(System.in);
 		String cuv = sb.nextLine();
 		if (verificareCuvant(n, A, cuv) == false)

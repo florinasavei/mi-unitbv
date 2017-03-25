@@ -1,0 +1,9 @@
+Cuvant cheie: while
+
+Identificator: k
+
+Identificator: k
+
+Operator relational: =
+
+0

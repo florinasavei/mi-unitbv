@@ -1,0 +1,83 @@
+Cuvant cheie: if
+
+Identificator: a
+
+Operator relational: <>
+
+Operator relational: >
+
+3
+Numar: 
+
+Cuvant cheie: if
+
+Identificator: b
+
+Operator relational: >=
+
+Operator relational: =
+
+Numar: 2
+
+Cuvant cheie: then
+
+Identificator: a
+
+Cuvant cheie: else
+
+Cuvant cheie: if
+
+Identificator: a
+
+Operator relational: =
+
+Numar: 2
+
+Cuvant cheie: then
+
+Identificator: b
+
+Operator relational: =
+
+Identificator: a
+
+Identificator: b
+
+Operator relational: =
+
+3
+Numar: 
+
+Cuvant cheie: while
+
+Identificator: c
+
+Operator relational: =
+
+Numar: 2
+
+Cuvant cheie: 
+
+Identificator: c
+
+Operator relational: =
+
+5
+Numar: 
+
+Cuvant cheie: if
+
+Identificator: r
+
+Operator relational: =
+
+Numar: 4
+
+Cuvant cheie: then
+
+Identificator: d
+
+Operator relational: =
+
+Identificator: c
+

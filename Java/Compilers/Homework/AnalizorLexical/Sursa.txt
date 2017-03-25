@@ -1,0 +1,7 @@
+if a <> 3
+if b >= 2 then a else
+if a = 2 then b = a
+b = 3
+while c = 2 
+c = 5
+if r = 4 then d = c
