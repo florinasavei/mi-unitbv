@@ -1,0 +1,21 @@
+In AF_intrare.txt:
+
+pe prima linie numarul de stari
+
+pe a 2-a linie numarul de simboluri din Sigma
+
+pe a 3-a linie simbolurile lui sigma separate de spatii
+
+pe a 4-a linie numarul total de arce (starile vor fi notate numai cu 0, 1, 2, 3 ...)
+
+de la a 5-a linie in jos, este descris fiecare arc sub forma 
+A b C
+unde A este starea din care plec, b este numele arcului, C este starea in care ajung
+
+urmeaza starea initiala
+
+urmeaza numarul de stari finale, iar pe urmatoarea linie starile finale
+
+
+ambele fisiere AF_intrare.txt si AF_cuvant.txt trebuie sa existe in calea de rulare a programului
+C:\Users\user1\Documents\Visual Studio 2013\Projects\afnLambda\afnLambda

@@ -1,0 +1,25 @@
+Compilarea fisierelor *l
+UN EXEMPLU
+In cmd.exe se tipareste
+cd /d "d:\teme"
+"c:\flex\win_flex.exe" --win "tema2_1.l"
+
+Comanda "c:\flex\win_flex.exe" --win "tema2_1.l" este pentru sistemele windows
+Pentru Linux, dispare optiunea --win
+
+Fisierul lex.yy.c
+Se creaza acolo unde e pozitionata calea cmd.exe, adica in d:\teme
+
+Se deschide lex.yy.c cu un editor text, sus pe primul rand gol, daca nu exista il inserezi, se va scrie
+#include "stdafx.h"
+
+
+intrare.txt este fisier care trebuie sa se afle in calea de unde ruleaza programul in C++
+De exemplu:
+C:\Users\user1\Documents\Visual Studio 2013\Projects\cpp1\cpp1\intrare.txt
+In aceeasi cale se va crea si fisierul iesire.txt
+Acestea sunt rulate pentru problema 2.2
+
+La problemele 1, citirea se face din consola, la problemele 2 trebuie sa existe intrare.txt, la problema 3 e optional (daca vreau sa citesc din fisier:
+in cmd.exe se scrie
+"...Studio 2013\Projects\cpp1\Debug\cpp1.exe" intrare.txt

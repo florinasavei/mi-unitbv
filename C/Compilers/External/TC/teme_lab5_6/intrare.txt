@@ -1,0 +1,9 @@
+#include "stdio.h"
+
+
+
+int main(){
+int a=14.5,b=12;         	 char *s="sir de caractere";
+ 		printf("wellcome in   C\n");
+ return 0;
+}
