@@ -7,46 +7,46 @@ import java.util.*;
 public class Markov {
 
     public static void main(String[] args) throws FileNotFoundException {
-        FileInputStream fis = new FileInputStream("reguli_ex1.txt");
-        Scanner cit_fis = new Scanner(fis);
-        Scanner cit_cons = new Scanner(System.in);
+        FileInputStream fis = new FileInputStream("reguli.txt");
+        Scanner citireFisier = new Scanner(fis);
+        Scanner citireCuvand = new Scanner(System.in);
 
-        ArrayList<String> st = new ArrayList<String>();
-        ArrayList<String> dr = new ArrayList<String>();
-        //int reguli;
+        ArrayList<String> stanga = new ArrayList<String>();
+        ArrayList<String> dreapta = new ArrayList<String>();
         String cuvant;
 
         System.out.print("Cuvantul: ");
-        cuvant=cit_cons.next();
+        cuvant=citireCuvand.next();
 
-        int reguli = Integer.parseInt(cit_fis.nextLine());
-        System.out.print("Regulile sunt : ");
-        System.out.println(reguli);
+        int nrReguli = Integer.parseInt(citireFisier.nextLine());
+        System.out.print("Numarul de reguli este : ");
+        System.out.println(nrReguli);
 
-        for (int i=0; i<reguli; i++)
+        System.out.print("Avem urmatoarele reguli : ");
+        for (int i=0; i<nrReguli; i++)
         {
-            st.add(cit_fis.next());
-            dr.add(cit_fis.next());
-            System.out.println( st.get(i) + " " + dr.get(i));
+            stanga.add(citireFisier.next());
+            dreapta.add(citireFisier.next());
+            System.out.println( stanga.get(i) + " " + dreapta.get(i));
         }
 
         System.out.println();
 
-        cit_fis.close();
-        cit_cons.close();
+        citireFisier.close();
+        citireCuvand.close();
 
 
-        for (int i=0; i<reguli; i++)
+        for (int i=0; i<nrReguli; i++)
         {
-            if (cuvant.indexOf(st.get(i)) != -1)
+            if (cuvant.indexOf(stanga.get(i)) != -1) //daca exista caracterul i din cuvant in membrul stang
             {
-                cuvant = cuvant.replaceFirst(st.get(i), dr.get(i));
-                cuvant = cuvant.replaceFirst("lambda", "");
-                i=-1;
+                cuvant = cuvant.replaceFirst(stanga.get(i), dreapta.get(i)); //inlocuim primul membrul din stanga cu corespondentul sau din dreapta
+                cuvant = cuvant.replaceFirst("lambda", ""); //eliminam lamda
+                i=-1; //resetam counter-ul
             }
         }
 
-        System.out.print("Rezultatul final este: " + cuvant);
+        System.out.print("Cuvantul generat este: " + cuvant);
 
     }
 
