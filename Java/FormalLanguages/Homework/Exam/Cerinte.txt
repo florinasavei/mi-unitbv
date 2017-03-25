@@ -1,0 +1,6 @@
+Se rezolva 3 din 5 probleme:
+1. Algoritmul Markov;
+2. Implementarea unui automat finit determinist (AFD);
+3. Implementarea unui automat finit nedeterminist (AFN);
+4. Transformarea unui AFN in AFD;
+5. Minimizarea AFD.
