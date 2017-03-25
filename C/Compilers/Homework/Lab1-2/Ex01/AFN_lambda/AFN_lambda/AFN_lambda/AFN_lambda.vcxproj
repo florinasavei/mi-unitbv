@@ -78,7 +78,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="AFN_lambda.c" />
+    <ClCompile Include="AFN_lambda.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\AF_intrare.txt" />

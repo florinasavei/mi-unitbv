@@ -15,12 +15,12 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="AFN_lambda.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
     <Text Include="AF_cuvant.txt" />
     <Text Include="..\AF_intrare.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="AFN_lambda.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

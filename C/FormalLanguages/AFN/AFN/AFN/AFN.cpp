@@ -11,7 +11,7 @@ struct nod{
 	char sigma;
 	int iesire;
 	nod *urmator;
-};
+}; 
 
 nod **v; // arcele sub forma tabelara
 int *sf; // multimea cu finale
@@ -20,7 +20,7 @@ int n_finale;
 
 int cautare(int qi, char arc, int nivel){
 	int i, qf = 0; nod *v2;
-	int ok = 0; // gasesc o destinatie kiar daca nu va fi acceptat cuvantul
+	int ok = 0; // gasesc o destinatie ciar daca nu va fi acceptat cuvantul
 	if (nivel == strlen(s) - 1){
 		v2 = v[qi];
 		while (v2 != NULL){
