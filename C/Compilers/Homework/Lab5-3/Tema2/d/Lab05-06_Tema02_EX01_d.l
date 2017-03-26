@@ -8,13 +8,16 @@ static FILE *f;
 */
 
 %%
+
+\/\/.*	fprintf(f, "\n");
+
 \/\*.*?\*\/	fprintf(f, "\n");
 
 \/\*.*?		fprintf(f, "");
 \*.*?		fprintf(f, "");
 .*?\/\*		fprintf(f, "\n");
 
-\/\/.*	fprintf(f, "\n");
+
 
 (.|\t|\n)	fprintf(f, "%s", yytext);
 
