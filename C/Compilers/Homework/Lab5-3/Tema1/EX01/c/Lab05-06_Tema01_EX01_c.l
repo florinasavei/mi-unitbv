@@ -2,10 +2,10 @@
 %{
 
 %}
-/*Toate cuvintele care conŃin un număr par de 1 şi nici un 0  */
+/*Toate cuvintele care contin un număr par de 1 şi nici un 0  */
 
 %%
-11(11)*	printf("cuvant acceptat:%s\n",yytext);
+(11)+	printf("cuvant acceptat:%s\n",yytext);
 [^\t\n]+	;
 .			;
 %%

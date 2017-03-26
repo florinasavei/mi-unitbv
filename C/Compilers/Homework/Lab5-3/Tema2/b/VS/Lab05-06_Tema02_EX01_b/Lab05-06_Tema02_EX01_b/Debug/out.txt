@@ -1,0 +1,6 @@
+identificator: sdgdf 
+identificator: dgfdg 
+identificator: fgdgdf 
+identificator: dfgdfg 
+numar intreg: 56465 
+identificator: fdgdf454df 
