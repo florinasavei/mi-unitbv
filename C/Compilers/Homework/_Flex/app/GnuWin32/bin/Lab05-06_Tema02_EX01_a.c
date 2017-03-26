@@ -287,10 +287,9 @@ static void yy_fatal_error YY_PROTO(( yyconst char msg[] ));
 
 #define YY_NUM_RULES 4
 #define YY_END_OF_BUFFER 5
-static yyconst short int yy_accept[16] =
+static yyconst short int yy_accept[10] =
     {   0,
-        1,    1,    5,    2,    3,    4,    2,    2,    2,    2,
-        2,    2,    1,    1,    0
+        0,    0,    5,    3,    1,    2,    1,    2,    0
     } ;
 
 static yyconst int yy_ec[256] =
@@ -298,8 +297,8 @@ static yyconst int yy_ec[256] =
         1,    1,    1,    1,    1,    1,    1,    1,    2,    3,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
+        1,    2,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
-        1,    1,    1,    1,    1,    1,    1,    4,    5,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
@@ -325,35 +324,31 @@ static yyconst int yy_ec[256] =
         1,    1,    1,    1,    1
     } ;
 
-static yyconst int yy_meta[6] =
+static yyconst int yy_meta[4] =
     {   0,
-        1,    2,    2,    1,    1
+        1,    2,    3
     } ;
 
-static yyconst short int yy_base[17] =
+static yyconst short int yy_base[12] =
     {   0,
-        0,    0,   12,    0,   16,   16,    5,   10,    0,    0,
-        0,    0,    4,    0,   16,    6
+        0,    0,    6,    7,    0,    0,    0,    0,    7,    3,
+        1
     } ;
 
-static yyconst short int yy_def[17] =
+static yyconst short int yy_def[12] =
     {   0,
-       15,    1,   15,   16,   15,   15,   15,   15,   16,    7,
-        8,    8,    7,   13,    0,   15
+        9,    1,    9,    9,   10,   11,   10,   11,    0,    9,
+        9
     } ;
 
-static yyconst short int yy_nxt[22] =
+static yyconst short int yy_nxt[11] =
     {   0,
-        4,    5,    6,    7,    8,    9,    9,   14,   10,   11,
-        9,   15,   15,   12,   13,    3,   15,   15,   15,   15,
-       15
+        4,    5,    6,    8,    7,    9,    3,    9,    9,    9
     } ;
 
-static yyconst short int yy_chk[22] =
+static yyconst short int yy_chk[11] =
     {   0,
-        1,    1,    1,    1,    1,    7,   16,   13,    7,    7,
-        8,    3,    0,    8,    8,   15,   15,   15,   15,   15,
-       15
+        1,    1,    1,   11,   10,    3,    9,    9,    9,    9
     } ;
 
 static yy_state_type yy_last_accepting_state;
@@ -367,12 +362,14 @@ static char *yy_last_accepting_cpos;
 #define YY_MORE_ADJ 0
 #define YY_RESTORE_YY_MORE_OFFSET
 char *yytext;
-#line 1 "Lab05-06_Tema01_EX01_d.l"
+#line 1 "Lab05-06_Tema02_EX01_a.l"
 #define INITIAL 0
-#line 3 "Lab05-06_Tema01_EX01_d.l"
-
-/*Toate cuvintele care contin un numÄƒr par de 1*/
-#line 376 "lex.yy.c"
+#line 3 "Lab05-06_Tema02_EX01_a.l"
+static FILE *f;
+/* Sa se transforme toate secvenNele de caractere albe 
+ * într-un singur caracter alb si secvenNele de newline într-un 
+ * singur newline dintr-un fisier text obNinând rezultatul în alt fisier text. */
+#line 373 "lex.yy.c"
 
 /* Macros after this point can all be overridden by user definitions in
  * section 1.
@@ -523,9 +520,9 @@ YY_DECL
 	register char *yy_cp, *yy_bp;
 	register int yy_act;
 
-#line 7 "Lab05-06_Tema01_EX01_d.l"
+#line 10 "Lab05-06_Tema02_EX01_a.l"
 
-#line 529 "lex.yy.c"
+#line 526 "lex.yy.c"
 
 	if ( yy_init )
 		{
@@ -576,13 +573,13 @@ yy_match:
 			while ( yy_chk[yy_base[yy_current_state] + yy_c] != yy_current_state )
 				{
 				yy_current_state = (int) yy_def[yy_current_state];
-				if ( yy_current_state >= 16 )
+				if ( yy_current_state >= 10 )
 					yy_c = yy_meta[(unsigned int) yy_c];
 				}
 			yy_current_state = yy_nxt[yy_base[yy_current_state] + (unsigned int) yy_c];
 			++yy_cp;
 			}
-		while ( yy_base[yy_current_state] != 16 );
+		while ( yy_base[yy_current_state] != 7 );
 
 yy_find_action:
 		yy_act = yy_accept[yy_current_state];
@@ -610,25 +607,25 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 8 "Lab05-06_Tema01_EX01_d.l"
-printf("cuvant acceptat:%s\n",yytext);
+#line 11 "Lab05-06_Tema02_EX01_a.l"
+{fprintf(f," ");}
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 9 "Lab05-06_Tema01_EX01_d.l"
-;
+#line 12 "Lab05-06_Tema02_EX01_a.l"
+{fprintf(f," ");}
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 10 "Lab05-06_Tema01_EX01_d.l"
-;
+#line 13 "Lab05-06_Tema02_EX01_a.l"
+{fprintf(f,"%s",yytext);}
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 11 "Lab05-06_Tema01_EX01_d.l"
+#line 14 "Lab05-06_Tema02_EX01_a.l"
 ECHO;
 	YY_BREAK
-#line 632 "lex.yy.c"
+#line 629 "lex.yy.c"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -920,7 +917,7 @@ static yy_state_type yy_get_previous_state()
 		while ( yy_chk[yy_base[yy_current_state] + yy_c] != yy_current_state )
 			{
 			yy_current_state = (int) yy_def[yy_current_state];
-			if ( yy_current_state >= 16 )
+			if ( yy_current_state >= 10 )
 				yy_c = yy_meta[(unsigned int) yy_c];
 			}
 		yy_current_state = yy_nxt[yy_base[yy_current_state] + (unsigned int) yy_c];
@@ -955,11 +952,11 @@ yy_state_type yy_current_state;
 	while ( yy_chk[yy_base[yy_current_state] + yy_c] != yy_current_state )
 		{
 		yy_current_state = (int) yy_def[yy_current_state];
-		if ( yy_current_state >= 16 )
+		if ( yy_current_state >= 10 )
 			yy_c = yy_meta[(unsigned int) yy_c];
 		}
 	yy_current_state = yy_nxt[yy_base[yy_current_state] + (unsigned int) yy_c];
-	yy_is_jam = (yy_current_state == 15);
+	yy_is_jam = (yy_current_state == 9);
 
 	return yy_is_jam ? 0 : yy_current_state;
 	}
@@ -1514,13 +1511,11 @@ int main()
 	return 0;
 	}
 #endif
-#line 11 "Lab05-06_Tema01_EX01_d.l"
+#line 14 "Lab05-06_Tema02_EX01_a.l"
 
-
-int main(){
-
-yylex();
-
-return 0;
-
+int main()
+{
+	f=fopen ("out.txt","w");
+	yylex();
+	fclose(f);
 }

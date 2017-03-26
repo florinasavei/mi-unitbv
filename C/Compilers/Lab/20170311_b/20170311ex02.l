@@ -6,7 +6,8 @@
 %%
 [ \t]+		fprintf(f," ");
 [\n]+		fprintf(f," ");
-[^ \t\n]	fprintf(f,yytext);
+[^\t\n]	;
+.	fprintf(f,yytext);
 %%
 
 int main(){

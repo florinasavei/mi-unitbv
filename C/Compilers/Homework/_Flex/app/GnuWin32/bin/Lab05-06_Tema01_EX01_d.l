@@ -2,10 +2,10 @@
 %{
 
 %}
-/*Toate cuvintele care conŃin un număr par de 1*/
+/*Toate cuvintele care contin un număr par de 1*/
 
 %%
-(0*0*10*)*	printf("cuvant acceptat:%s\n",yytext);
+(0*10*10*)*	printf("cuvant acceptat:%s\n",yytext);
 [^\t\n]+	;
 .			;
 %%
