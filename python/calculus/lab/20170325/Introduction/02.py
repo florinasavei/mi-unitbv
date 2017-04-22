@@ -1,7 +1,7 @@
 a=34
 if a==0:
-    print("a este null")
+    print("a is null")
 elif a<0:
-    print("a este negativ")
+    print("a is negative")
 else:
-    print("a este pozitiv")
+    print("a is positive")
