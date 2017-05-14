@@ -10,16 +10,17 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace WpfApplication1.Views
+namespace app01
 {
     /// <summary>
-    /// Interaction logic for About.xaml
+    /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class About : Window
+    public partial class MainWindow : Window
     {
-        public About()
+        public MainWindow()
         {
             InitializeComponent();
         }
