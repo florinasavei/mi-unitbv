@@ -1,3 +1,5 @@
+// This program separates negative numbers from positives number from an array that is read from the keyboard
+
 using namespace std;
 #include <iostream>
 
@@ -24,7 +26,7 @@ void separation(int nrElem, int *&initialList, int &positivesCounter, int *&poti
 
 	for (int i = 0; i < nrElem; i++)
 	{
-		if (initialList[i] > 0) 
+		if (initialList[i] > 0)
 		{
 			potivesList[k++] = initialList[i];
 		}
@@ -45,9 +47,9 @@ void main()
 	cin >> nrElem;
 	elementsArray = new int[nrElem];
 	cout << "Enter elements of the array " << endl;
-	for(i = 0; i < nrElem; i++)
+	for (i = 0; i < nrElem; i++)
 	{
-		cout << "a[" <<i + 1<< "]= ";
+		cout << "a[" << i + 1 << "]= ";
 		cin >> elementsArray[i];
 	}
 	separation(nrElem, elementsArray, positivesCount, positivesArray, negativesCount, negativesArray);;//seding by reference

@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="negativeSeparation.cpp">
+    <ClCompile Include="SeparatingNegativesFromPositives.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

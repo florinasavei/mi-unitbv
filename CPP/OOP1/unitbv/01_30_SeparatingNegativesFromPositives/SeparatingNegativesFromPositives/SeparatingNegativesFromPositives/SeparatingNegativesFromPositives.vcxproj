@@ -20,9 +20,9 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
-    <ProjectGuid>{58AF093F-4AEA-4BBF-9553-3B8B4910767E}</ProjectGuid>
+    <ProjectGuid>{D778F637-894D-418A-AC5A-9D596E3490AA}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>My03SeparatingNegativesFromPositives</RootNamespace>
+    <RootNamespace>SeparatingNegativesFromPositives</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.15063.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -139,7 +139,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="negativeSeparation.cpp" />
+    <ClCompile Include="SeparatingNegativesFromPositives.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
