@@ -26,7 +26,7 @@ void separation(int nrElem, int *&initialList, int &positivesCounter, int *&poti
 
 	for (int i = 0; i < nrElem; i++)
 	{
-		if (initialList[i] > 0)
+		if (initialList[i] >= 0)
 		{
 			potivesList[k++] = initialList[i];
 		}
