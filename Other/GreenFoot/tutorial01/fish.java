@@ -14,6 +14,8 @@ public class fish extends Actor
      */
     public void act() 
     {
+        move(4);
+        turn(Greenfoot.getRandomNumber(5));
         // Add your action code here.
     }    
 }
