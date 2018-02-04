@@ -30,5 +30,7 @@ public class space extends World
         addObject(dophin,123,285);
         fish fish = new fish();
         addObject(fish,383,106);
+        smallfish smallfish = new smallfish();
+        addObject(smallfish,572,204);
     }
 }
