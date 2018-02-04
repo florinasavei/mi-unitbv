@@ -31,5 +31,16 @@ public class dophin extends Actor
         {
             move(-5);
         }
+        
+        Actor fish;
+        
+        fish = getOneObjectAtOffset(0,0,fish.class);
+        
+        if(fish!= null){
+            World world;
+            world = getWorld();
+            world.removeObject(fish);
+       
+        }
     }
 }

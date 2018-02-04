@@ -16,7 +16,7 @@ public class space extends World
     public space()
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
-        super(600, 400, 1); 
+        super(800, 600, 1); 
         prepare();
     }
 
@@ -28,5 +28,7 @@ public class space extends World
     {
         dophin dophin = new dophin();
         addObject(dophin,123,285);
+        fish fish = new fish();
+        addObject(fish,383,106);
     }
 }
