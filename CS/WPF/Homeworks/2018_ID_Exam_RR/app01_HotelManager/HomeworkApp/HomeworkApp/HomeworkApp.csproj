@@ -81,6 +81,24 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\Entity1.cs">
+      <DependentUpon>Users.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\HotelEntities.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HotelEntities.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\HotelEntities.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HotelEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\HotelEntities.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HotelEntities.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Models\Users.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -90,11 +108,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Users.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\HotelEntities.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>HotelEntities.edmx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
@@ -133,16 +146,25 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Models\HotelEntities.edmx.sql" />
-    <Content Include="Models\Users.Context.tt">
+    <Content Include="Models\HotelEntities.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>HotelEntities.edmx</DependentUpon>
+      <LastGenOutput>HotelEntities.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\HotelEntities.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>HotelEntities.edmx</DependentUpon>
+      <LastGenOutput>HotelEntities.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\Users.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Users.Context.cs</LastGenOutput>
+      <DependentUpon>HotelEntities.edmx</DependentUpon>
     </Content>
     <Content Include="Models\Users.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>HotelEntities.edmx</DependentUpon>
       <LastGenOutput>Users.cs</LastGenOutput>
+      <DependentUpon>HotelEntities.edmx</DependentUpon>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

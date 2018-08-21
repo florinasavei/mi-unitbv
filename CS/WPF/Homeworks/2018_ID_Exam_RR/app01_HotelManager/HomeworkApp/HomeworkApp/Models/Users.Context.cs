@@ -25,5 +25,6 @@ namespace HomeworkApp.Models
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<Entity1> Entity1 { get; set; }
     }
 }
