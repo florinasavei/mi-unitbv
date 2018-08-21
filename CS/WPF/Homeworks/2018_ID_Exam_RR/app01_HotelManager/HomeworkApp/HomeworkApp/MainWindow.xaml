@@ -7,6 +7,19 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        
+
+        <StackPanel Height="34" Margin="204,0,223.6,125" VerticalAlignment="Bottom" >
+            <TextBlock x:Name="UsernameContainer" TextWrapping="Wrap" VerticalAlignment="Center" Margin="20,2,20.4,5" Height="75" RenderTransformOrigin="0.502,-0.042"><Run Text="Username"/><Run Text=" "/><InlineUIContainer>
+                    <TextBox x:Name="UsernameInput" Height="20" VerticalAlignment="Bottom" TextWrapping="Wrap" Text="" Width="172" RenderTransformOrigin="1.103,0.553"/>
+                </InlineUIContainer></TextBlock>
+        </StackPanel>
+
+        <StackPanel Height="27" Margin="204,0,293.6,93" VerticalAlignment="Bottom" >
+            <TextBlock x:Name="PasswordContainer" TextWrapping="Wrap" VerticalAlignment="Center" Margin="25,2,19.4,5" Height="58" RenderTransformOrigin="0.492,1.398"><Run Text="Password"/><Run Text=" "/><InlineUIContainer>
+                    <PasswordBox x:Name="PasswordInput" Height="20" VerticalAlignment="Bottom"  Width="171" RenderTransformOrigin="1.103,0.553"/>
+                </InlineUIContainer></TextBlock>
+        </StackPanel>
+        <Button x:Name="LoginButton" Content="Login" HorizontalAlignment="Right" Margin="0,0,250.6,93" VerticalAlignment="Bottom" Width="75" Height="66"/>
+
     </Grid>
 </Window>
