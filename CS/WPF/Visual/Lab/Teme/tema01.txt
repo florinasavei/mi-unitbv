@@ -1,6 +1,0 @@
-Sa se creeze o aplicatie in C#
-
-Termen Livrare: 6 Mai
-
-Cerinte exra: leazy loading
-Folosim proprietaea de tip "tab"
