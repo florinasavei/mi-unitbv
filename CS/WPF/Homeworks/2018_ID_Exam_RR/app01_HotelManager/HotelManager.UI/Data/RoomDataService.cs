@@ -11,8 +11,8 @@ namespace HotelManager.UI.Data
     {
         public IEnumerable<Room> GetAll()
         {
-            yield return new Room {Number = 10};
-            yield return new Room {Number = 20};
+            yield return new Room {Number = 10, Price = 99M};
+            yield return new Room {Number = 20, Price = 77M};
         }
     }
 }

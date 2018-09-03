@@ -1,6 +1,6 @@
 ﻿using System.Windows;
-using HotelManager.UI.Data;
-using HotelManager.UI.ViewModel;
+using Autofac;
+using HotelManager.UI.Startup;
 
 namespace HotelManager.UI
 {
@@ -11,9 +11,10 @@ namespace HotelManager.UI
     {
         private void App_OnStartup(object sender, StartupEventArgs e)
         {
-            var mainWindow = new MainWindow(
-                new MainViewModel(new RoomDataService()));
+            var bootstrapper = new Bootstrapper();
+            var container = bootstrapper.Bootstrap();
 
+            var mainWindow = container.Resolve<MainWindow>();
             mainWindow.Show();
         }
     }

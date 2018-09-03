@@ -8,7 +8,7 @@ namespace HotelManager.UI.ViewModel
     public class MainViewModel : ViewModelBase
     {
         private IRoomDataService _roomDataService;
-        private Room _seleceRoom;
+        private Room _selectedRoom;
 
 
         public MainViewModel(IRoomDataService roomDataService)
@@ -29,16 +29,15 @@ namespace HotelManager.UI.ViewModel
 
         public ObservableCollection<Room> Rooms { get; set; }
 
-        public Room SelectedFriend
+        public Room SelectedRoom
         {
-            get { return _seleceRoom; }
+            get { return _selectedRoom; }
             set
             {
-                _seleceRoom = value;
+                _selectedRoom = value;
                 OnPropertyChanged();
             }
         }
 
     }
-
 }
