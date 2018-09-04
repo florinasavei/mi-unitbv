@@ -21,8 +21,15 @@ namespace HotelManager.UI.ViewModel
         {
             _RoomLookupService = roomLookupDataService;
             _eventAgregator = eventAggregator;
-            Rooms = new ObservableCollection<LookupItem>();
+            Rooms = new ObservableCollection<NavigationItemViewModel>();
+            _eventAgregator.GetEvent<AfterRoomSavedEvent>().Subscribe(AfterRoomSaved);
 
+        }
+
+        private void AfterRoomSaved(AfterRoomSavedEventArgs obj)
+        {
+            var lookupItem = Rooms.Single(l => l.Id == obj.Id);
+            lookupItem.DisplayMember = obj.DisplayMember;
         }
 
         public async Task LoadAsync()
@@ -31,15 +38,15 @@ namespace HotelManager.UI.ViewModel
             Rooms.Clear();
             foreach (var item in lookup)
             {
-                Rooms.Add(item);
+                Rooms.Add(new NavigationItemViewModel(item.Id, item.DisplayMember));
             }
         }
 
-        public ObservableCollection<LookupItem> Rooms { get; }
+        public ObservableCollection<NavigationItemViewModel> Rooms { get; }
 
-        private LookupItem _selectedRoom;
+        private NavigationItemViewModel _selectedRoom;
 
-        public LookupItem SelectedRoom
+        public NavigationItemViewModel SelectedRoom
         {
             get { return _selectedRoom; }
             set

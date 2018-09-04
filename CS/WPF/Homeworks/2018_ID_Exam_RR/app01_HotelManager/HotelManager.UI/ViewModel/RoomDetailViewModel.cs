@@ -38,6 +38,12 @@ namespace HotelManager.UI.ViewModel
         private async void OnSaveExecute()
         {
             await _dataService.SaveAsync(Room);
+            _eventAggregator.GetEvent<AfterRoomSavedEvent>().Publish(
+                new AfterRoomSavedEventArgs
+                {
+                    Id = Room.Id,
+                    DisplayMember = $"Room {Room.Number.ToString()}"
+                });
 
         }
 
