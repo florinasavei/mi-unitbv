@@ -25,5 +25,16 @@ namespace HotelManager.UI.Data
                 return await ctx.Rooms.AsNoTracking().SingleAsync(f => f.Id == friendId);
             }
         }
+
+        public async Task SaveAsync(Room friend)
+        {
+            using (var ctx = _contextCreator())
+            {
+                ctx.Rooms.Attach(friend);
+                ctx.Entry(friend).State = EntityState.Modified;
+                await ctx.SaveChangesAsync();
+            }
+        }
+
     }
 }

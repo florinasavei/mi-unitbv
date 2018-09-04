@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using HotelManager.Model;
 using HotelManager.UI.Data;
 using HotelManager.UI.Event;
+using Prism.Commands;
 using Prism.Events;
 
 namespace HotelManager.UI.ViewModel
@@ -22,6 +24,21 @@ namespace HotelManager.UI.ViewModel
             _eventAggregator = eventAggregator;
             _eventAggregator.GetEvent<OpenRoomDetailViewEvent>()
                 .Subscribe(OnOpenRoomDetailView);
+
+            SaveCommand = new DelegateCommand(OnSaveExecute, OnSaveCanExecute);
+
+        }
+
+        private bool OnSaveCanExecute()
+        {
+            //todo: Check if friend is valid
+            return true;
+        }
+
+        private async void OnSaveExecute()
+        {
+            await _dataService.SaveAsync(Room);
+
         }
 
         private async void OnOpenRoomDetailView(int RoomId)
@@ -43,6 +60,9 @@ namespace HotelManager.UI.ViewModel
                 OnPropertyChanged();
             }
         }
+
+        public ICommand SaveCommand { get; }
+
 
     }
 }
