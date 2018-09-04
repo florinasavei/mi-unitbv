@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:HotelManager.UI"
         xmlns:view="clr-namespace:HotelManager.UI.View"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="HotelManager" Height="450" Width="800">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="200"></ColumnDefinition>
