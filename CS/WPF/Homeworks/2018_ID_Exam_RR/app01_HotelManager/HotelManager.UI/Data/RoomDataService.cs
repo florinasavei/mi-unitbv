@@ -1,18 +1,29 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using HotelManager.Model;
+using HotelManager.DAL;
 
 namespace HotelManager.UI.Data
 {
-    class RoomDataService : IRoomDataService
+    public class RoomDataService : IRoomDataService
     {
-        public IEnumerable<Room> GetAll()
+        private Func<HotelManagerDbContext> _contextCreator;
+
+        public RoomDataService(Func<HotelManagerDbContext> contextCrator)
         {
-            yield return new Room {Number = 10, Price = 99M};
-            yield return new Room {Number = 20, Price = 77M};
+            _contextCreator = contextCrator;
+
+        }
+
+        public async Task<Room> GetByIdAsync(int friendId)
+        {
+            using (var ctx = _contextCreator())
+            {
+                return await ctx.Rooms.AsNoTracking().SingleAsync(f => f.Id == friendId);
+            }
         }
     }
 }

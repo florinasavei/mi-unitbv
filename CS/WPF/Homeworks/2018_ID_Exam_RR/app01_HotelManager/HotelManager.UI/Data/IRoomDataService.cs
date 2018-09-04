@@ -1,10 +1,11 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using HotelManager.Model;
 
 namespace HotelManager.UI.Data
 {
     public interface IRoomDataService
     {
-        IEnumerable<Room> GetAll();
+        Task<Room> GetByIdAsync(int roomId);
     }
 }

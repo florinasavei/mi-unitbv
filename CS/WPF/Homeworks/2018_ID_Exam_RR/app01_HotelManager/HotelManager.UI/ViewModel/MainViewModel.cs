@@ -1,43 +1,23 @@
-﻿using System.Collections.ObjectModel;
-using HotelManager.Model;
-using HotelManager.UI.Data;
+﻿using System.Threading.Tasks;
 
 namespace HotelManager.UI.ViewModel
 {
 
     public class MainViewModel : ViewModelBase
     {
-        private IRoomDataService _roomDataService;
-        private Room _selectedRoom;
-
-
-        public MainViewModel(IRoomDataService roomDataService)
+        public MainViewModel(INavigationViewModel navigationViewModel, IRoomDetailViewModel roomDetailViewModel)
         {
-            Rooms = new ObservableCollection<Room>();
-            _roomDataService = roomDataService;
+            NavigationViewModel = navigationViewModel;
+            RoomDetailViewModel = roomDetailViewModel;
         }
 
-        public void Load()
+        public async Task LoadAsync()
         {
-            var rooms = _roomDataService.GetAll();
-            Rooms.Clear();
-            foreach (var room in rooms)
-            {
-                Rooms.Add(room);
-            }
+            await NavigationViewModel.LoadAsync();
         }
 
-        public ObservableCollection<Room> Rooms { get; set; }
-
-        public Room SelectedRoom
-        {
-            get { return _selectedRoom; }
-            set
-            {
-                _selectedRoom = value;
-                OnPropertyChanged();
-            }
-        }
+        public INavigationViewModel NavigationViewModel { get; }
+        public IRoomDetailViewModel RoomDetailViewModel { get; }
 
     }
 }

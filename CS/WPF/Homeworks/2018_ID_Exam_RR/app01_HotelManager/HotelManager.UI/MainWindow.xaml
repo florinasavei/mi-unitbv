@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HotelManager.UI"
+        xmlns:view="clr-namespace:HotelManager.UI.View"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
@@ -12,16 +13,8 @@
             <ColumnDefinition Width="*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
 
-        <ListView Grid.Column="0"
-                  ItemsSource="{Binding Rooms}"
-                  SelectedItem="{Binding SelectedRoom, Mode=TwoWay}"
-                  DisplayMemberPath="Number"
-        ></ListView>
-
-        <TextBox Grid.Column="1"
-                 Text="{Binding SelectedRoom.Price, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                 Margin="10 0 10 10"
-        ></TextBox>
+        <view:NavigationView DataContext="{Binding NavigationViewModel}"/>
+        <view:RoomDetailView Grid.Column="1" DataContext="{Binding RoomDetailViewModel}"></view:RoomDetailView>
 
     </Grid>
 </Window>
