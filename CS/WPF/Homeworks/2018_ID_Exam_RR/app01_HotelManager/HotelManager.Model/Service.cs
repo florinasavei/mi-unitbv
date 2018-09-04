@@ -12,7 +12,11 @@ namespace HotelManager.Model
         [Required]
         public int Id { get; set; }
 
+        [StringLength(100)]
         public string ServiceName { get; set; }
+
+        [StringLength(500)]
+        public string Description { get; set; }
 
         public Decimal PricePerDay { get; set; }
 

@@ -14,14 +14,23 @@ namespace HotelManager.Model
 
         public  UserType UserType { get; set; }
 
+        public bool IsActive { get; set; }
+
+        public bool IsDeleted { get; set; }
+
+        [StringLength(50)]
         public string Email { get; set; }
 
+        [StringLength(50)]
         public string Username { get; set; }
 
+        [StringLength(50)]
         public string Password { get; set; }
 
+        [StringLength(50)]
         public string FirstName { get; set; }
 
+        [StringLength(50)]
         public string LastName { get; set; }
 
     }

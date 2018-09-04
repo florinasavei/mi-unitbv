@@ -12,6 +12,8 @@ namespace HotelManager.Model
         [Required]
         public int Id { get; set; }
 
+        public bool IsDeleted { get; set; }
+
         public DateTime InvoiceDate { get; set; }
 
         public List<Reservation> Reservations { get; set; }
@@ -21,6 +23,8 @@ namespace HotelManager.Model
         public decimal PriceForRooms { get; set; }
 
         public decimal PriceForServices { get; set; }
+
+        public decimal Discount { get; set; }
 
         public decimal TotalAmount { get; set; }
 

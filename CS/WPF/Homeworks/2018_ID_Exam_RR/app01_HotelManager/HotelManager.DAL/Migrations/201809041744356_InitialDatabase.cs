@@ -12,7 +12,8 @@ namespace HotelManager.DAL.Migrations
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
-                        Name = c.String(),
+                        Name = c.String(maxLength: 50),
+                        Description = c.String(maxLength: 300),
                         Room_Id = c.Int(),
                     })
                 .PrimaryKey(t => t.Id)
@@ -25,11 +26,14 @@ namespace HotelManager.DAL.Migrations
                     {
                         Id = c.Int(nullable: false, identity: true),
                         UserType = c.Int(nullable: false),
-                        Email = c.String(),
-                        Username = c.String(),
-                        Password = c.String(),
-                        FirstName = c.String(),
-                        LastName = c.String(),
+                        IsActive = c.Boolean(nullable: false),
+                        IsDeleted = c.Boolean(nullable: false),
+                        Email = c.String(maxLength: 50),
+                        Username = c.String(maxLength: 50),
+                        Password = c.String(maxLength: 50),
+                        FirstName = c.String(maxLength: 50),
+                        LastName = c.String(maxLength: 50),
+                        ClinetDiscount = c.Byte(),
                         Discriminator = c.String(nullable: false, maxLength: 128),
                     })
                 .PrimaryKey(t => t.Id);
@@ -39,9 +43,11 @@ namespace HotelManager.DAL.Migrations
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
+                        IsDeleted = c.Boolean(nullable: false),
                         InvoiceDate = c.DateTime(nullable: false),
                         PriceForRooms = c.Decimal(nullable: false, precision: 18, scale: 2),
                         PriceForServices = c.Decimal(nullable: false, precision: 18, scale: 2),
+                        Discount = c.Decimal(nullable: false, precision: 18, scale: 2),
                         TotalAmount = c.Decimal(nullable: false, precision: 18, scale: 2),
                         PayedAmount = c.Decimal(nullable: false, precision: 18, scale: 2),
                         Client_Id = c.Int(),
@@ -55,10 +61,14 @@ namespace HotelManager.DAL.Migrations
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
+                        Status = c.Int(nullable: false),
+                        IsDeleted = c.Boolean(nullable: false),
                         ReservedFrom = c.DateTime(nullable: false),
                         ReservedUntil = c.DateTime(nullable: false),
+                        NumberOrPeople = c.Byte(nullable: false),
                         NumberOfDays = c.Int(nullable: false),
                         PricePerReservation = c.Decimal(nullable: false, precision: 18, scale: 2),
+                        Comment = c.String(maxLength: 500),
                         Invoice_Id = c.Int(),
                         Client_Id = c.Int(),
                     })
@@ -73,14 +83,16 @@ namespace HotelManager.DAL.Migrations
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
-                        Number = c.Int(nullable: false),
+                        Number = c.Byte(nullable: false),
+                        IsAvailable = c.Boolean(nullable: false),
+                        IsDeleted = c.Boolean(nullable: false),
                         Category = c.Int(nullable: false),
-                        Floor = c.Int(nullable: false),
-                        SingleBeds = c.Int(nullable: false),
-                        DoubleBeds = c.Int(nullable: false),
-                        NumberOfBedrooms = c.Int(nullable: false),
-                        NumberOfBaths = c.Int(nullable: false),
-                        Description = c.String(),
+                        Floor = c.Byte(nullable: false),
+                        SingleBeds = c.Byte(nullable: false),
+                        DoubleBeds = c.Byte(nullable: false),
+                        NumberOfBedrooms = c.Byte(nullable: false),
+                        NumberOfBaths = c.Byte(nullable: false),
+                        Description = c.String(maxLength: 500),
                     })
                 .PrimaryKey(t => t.Id);
             
@@ -103,7 +115,6 @@ namespace HotelManager.DAL.Migrations
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
-                        NumberOfDays = c.Int(nullable: false),
                         ServiceFrom = c.DateTime(nullable: false),
                         ServiceUntill = c.DateTime(nullable: false),
                         Service_Id = c.Int(),
@@ -120,7 +131,8 @@ namespace HotelManager.DAL.Migrations
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
-                        ServiceName = c.String(),
+                        ServiceName = c.String(maxLength: 100),
+                        Description = c.String(maxLength: 500),
                         PricePerDay = c.Decimal(nullable: false, precision: 18, scale: 2),
                     })
                 .PrimaryKey(t => t.Id);

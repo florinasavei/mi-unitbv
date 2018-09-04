@@ -39,7 +39,9 @@ namespace HotelManager.DAL.Migrations
 
             context.Rooms.AddOrUpdate(
                 f=> f.Number,
-                new Room { Number = 1, Category = RoomCategory.Standard, Floor = 0, SingleBeds=0, DoubleBeds=1, NumberOfBedrooms=1, NumberOfBaths=1 }
+                new Room { Number = 1, Category = RoomCategory.Standard, Floor = 0, SingleBeds=0, DoubleBeds=1, NumberOfBedrooms=1, NumberOfBaths=1 },
+                new Room { Number = 2, Category = RoomCategory.Economy, Floor = 0, SingleBeds=2, DoubleBeds=0, NumberOfBedrooms=1, NumberOfBaths=1 },
+                new Room { Number = 3, Category = RoomCategory.Standard, Floor = 0, SingleBeds=0, DoubleBeds=1, NumberOfBedrooms=1, NumberOfBaths=1 }
                 );
 
         }

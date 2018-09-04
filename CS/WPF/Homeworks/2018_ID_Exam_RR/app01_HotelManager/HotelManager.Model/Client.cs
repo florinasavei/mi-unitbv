@@ -12,6 +12,12 @@ namespace HotelManager.Model
         [Required]
         public int Id { get; set; }
 
+        public bool IsActive { get; set; }
+
+        public bool IsDeleted { get; set; }
+
+        public byte ClinetDiscount { get; set; }
+
         public List<Reservation> Reservations { get; set; }
 
         public List<Invoice> Invoices { get; set; }

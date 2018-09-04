@@ -12,7 +12,7 @@ namespace HotelManager.Model
         [Required]
         public int Id { get; set; }
 
-        public int NumberOfDays { get; set; }
+        public uint NumberOfDays { get; set; }
 
         public Service Service { get; set; }
 

@@ -13,7 +13,7 @@ namespace HotelManager.DAL.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201809031405490_InitialDatabase"; }
+            get { return "201809041744356_InitialDatabase"; }
         }
         
         string IMigrationMetadata.Source

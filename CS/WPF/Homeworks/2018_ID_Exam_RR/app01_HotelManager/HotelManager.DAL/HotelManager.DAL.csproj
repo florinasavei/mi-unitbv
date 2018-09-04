@@ -50,9 +50,9 @@
   <ItemGroup>
     <Compile Include="Class1.cs" />
     <Compile Include="HotelManagerDbContext.cs" />
-    <Compile Include="Migrations\201809031405490_InitialDatabase.cs" />
-    <Compile Include="Migrations\201809031405490_InitialDatabase.Designer.cs">
-      <DependentUpon>201809031405490_InitialDatabase.cs</DependentUpon>
+    <Compile Include="Migrations\201809041744356_InitialDatabase.cs" />
+    <Compile Include="Migrations\201809041744356_InitialDatabase.Designer.cs">
+      <DependentUpon>201809041744356_InitialDatabase.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -68,8 +68,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201809031405490_InitialDatabase.resx">
-      <DependentUpon>201809031405490_InitialDatabase.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201809041744356_InitialDatabase.resx">
+      <DependentUpon>201809041744356_InitialDatabase.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
