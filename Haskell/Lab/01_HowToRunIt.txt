@@ -6,7 +6,5 @@ Prelude> :lo PP1 --se incarca fisierul in program
 *Main> :reload --reincarca programul dupa modificari
 *Main> contapsc ["Ion","Valisle","Ion","Gigi"] "Ion" --calculeaza de cate ori apare un cuvant intr-o secventa
 *Main> delapsc ["Ion","Valisle","Ion","Gigi"] "Ion" -- seterge elementul din lista sia fiseaza ce ramane
+*Main> statcuvl ["Ion","Vasile","Maria","Matei","Ion"] -- afiseaza fiecare string de cate ori apare
 
-
-													 
-													 

@@ -31,7 +31,7 @@ main= do
         invlist[1,2,3,4]
         putStrLn ""
 
-
+--inversarea unei liste de numere intregi
 invlist::[Integer]->IO()
 invlist []=putStrLn "Lista inversata..."
 invlist (cap:rl)=do{
@@ -46,10 +46,13 @@ contapsc(cap:rl) cc | (cc==cap)=1+contapsc rl cc
                     | otherwise=contapsc rl cc
 
 --stergerea unui element
---afiseaza ce ramane
+--si afiseaza ce ramane
 delapsc::[[Char]]->String->[[Char]]
 delapsc [] _=[]
 delapsc (sc:rl) cd |(cd/=sc)=sc:(delapsc rl cd)
                    |otherwise=delapsc rl cd
 
-
+--afiseaza de cate se repeta fiecare string dint-o lista de stringuri
+statcuvl::[[Char]]->[(String,Int)]
+statcuvl []=[]
+statcuvl (cap:rl)=(cap,contapsc (cap:rl) cap):statcuvl (delapsc rl cap)
