@@ -34,12 +34,22 @@ main= do
 
 invlist::[Integer]->IO()
 invlist []=putStrLn "Lista inversata..."
-invlist (cap:r1)=do{
-        invlist r1;
+invlist (cap:rl)=do{
+        invlist rl;
         putStr (show cap);
 }
 
+--calculeaza de cate ori apare un string intr-o lsita de stringuri
 contapsc::[[Char]]->String->Int
 contapsc [] _=0
-contapsc(cap:r1) cc| (cc==cap)=1+contapsc r1 cc
-                   | otherwise=contapsc r1 cc
+contapsc(cap:rl) cc | (cc==cap)=1+contapsc rl cc
+                    | otherwise=contapsc rl cc
+
+--stergerea unui element
+--afiseaza ce ramane
+delapsc::[[Char]]->String->[[Char]]
+delapsc [] _=[]
+delapsc (sc:rl) cd |(cd/=sc)=sc:(delapsc rl cd)
+                   |otherwise=delapsc rl cd
+
+

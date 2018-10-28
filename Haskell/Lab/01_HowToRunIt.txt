@@ -5,3 +5,8 @@ Prelude> :lo PP1 --se incarca fisierul in program
 *Main> xor True False --chemam metoda xor din fisierul PP1
 *Main> :reload --reincarca programul dupa modificari
 *Main> contapsc ["Ion","Valisle","Ion","Gigi"] "Ion" --calculeaza de cate ori apare un cuvant intr-o secventa
+*Main> delapsc ["Ion","Valisle","Ion","Gigi"] "Ion" -- seterge elementul din lista sia fiseaza ce ramane
+
+
+													 
+													 
