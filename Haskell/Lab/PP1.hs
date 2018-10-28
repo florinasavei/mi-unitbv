@@ -38,3 +38,8 @@ invlist (cap:r1)=do{
         invlist r1;
         putStr (show cap);
 }
+
+contapsc::[[Char]]->String->Int
+contapsc [] _=0
+contapsc(cap:r1) cc| (cc==cap)=1+contapsc r1 cc
+                   | otherwise=contapsc r1 cc
