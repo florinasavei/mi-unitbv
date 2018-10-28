@@ -1,2 +1,5 @@
-Prelude> :lo PP1
-*Main> main
+Prelude> :ed PP1 --se deschide fisierul in mod afisare
+Prelude> :lo PP1 --se incarca fisierul in program
+*Main> main --se apeleaza metoda main
+*Main> suma(1,3) --chemam metoda suma din fisierul PP1
+*Main> xor True False --chemam metoda xor din fisierul PP1

@@ -1,0 +1,4 @@
+1. instalati https://www.haskell.org/platform/
+2. rulati [calea_unde_s-a_instalat]\8.4.3\winghci\winghci.exe
+3. setati notepad++ sau VSCode ca si editor default
+4. fisierele .hs se salveaza in [calea_unde_s-a_instalat]\8.4.3\winghci
