@@ -30,9 +30,13 @@ namespace Lab_2019_Mar_10
 
         }
 
+        public delegate void DoAction();
+
+        public DoAction _myAction { get; set; }
+
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-
+            _myAction();
         }
 
         private void OptionsMenu_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -48,15 +52,35 @@ namespace Lab_2019_Mar_10
             {
                 case "rbHello":
                     PrepareInput(selectedRadioName);
+                    _myAction = SayHello;
                     break;
                 case "rbAverage":
                     PrepareInput(selectedRadioName);
+                    _myAction = CalcualteAverage;
                     break;
                 case "rbCheckPalindrom":
                     PrepareInput(selectedRadioName);
+                    _myAction = CheckPalindrom;
                     break;
             }
         }
+     
+        private void SayHello()
+        {
+            lblInput.Text = "Enter your name";
+            lblResult.Text = "Hello " + txtInpt.Text + " !";
+        }
+
+        private void CalcualteAverage()
+        {
+            throw new NotImplementedException();
+        }
+
+        private void CheckPalindrom()
+        {
+            throw new NotImplementedException();
+        }
+
 
         private void PrepareInput(string selectedRadioName)
         {
