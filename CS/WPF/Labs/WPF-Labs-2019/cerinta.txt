@@ -13,3 +13,5 @@ metode:
 - split string intro numbers
 - average
 - isPalindrom
+
+* de folosit forach pt radioButtton (daca am folosit panel, eu am folosit SelectList)

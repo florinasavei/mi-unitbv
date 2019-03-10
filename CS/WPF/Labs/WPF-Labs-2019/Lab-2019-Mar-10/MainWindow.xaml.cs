@@ -84,11 +84,9 @@ namespace Lab_2019_Mar_10
             return "Hello, " + s + " !  your name has " + s.Length + " characters";
         }
 
-        private float Average(string s)
-        {
-            List<int> listOfNumbers = GetNumbersFromString(s);
-
-            return (float)listOfNumbers.Average();
+        private float Average(List<int> numbers)
+        { 
+            return (float)numbers.Average();
         }
 
         private List<int> GetNumbersFromString(string s)
@@ -102,8 +100,6 @@ namespace Lab_2019_Mar_10
                 lblResult.Text = "Invalid numbers";
                 throw new Exception(e.Message);
             }
-
-            return new List<int>();
         }
 
         private bool IsPalindrom(string s)
@@ -136,38 +132,49 @@ namespace Lab_2019_Mar_10
         {
             txtInpt.Text = "";
             lblResult.Text = "";
+            lblResultBorder.BorderBrush = System.Windows.Media.Brushes.Black;
         }
 
         private bool IsInputValid()
         {
+            bool isValid = false;
+
             if (string.IsNullOrWhiteSpace(txtInpt.Text))
             {
                 lblResult.Text = "Enter something in input first";
+                lblResultBorder.BorderBrush = System.Windows.Media.Brushes.Red;
                 return false;
             }
 
             switch (SelectedOption)
             {
                 case "rbHello":
-                    return true;
+                    isValid = true;
+                    break;
                 case "rbAverage":
                     if (txtInpt.Text.Contains(","))
                     {
                         lblResult.Text = "Invalid numbers";
-                        return false;
+                        isValid = false;
                     }
                     if (!char.IsDigit(txtInpt.Text[0]))
                     {
                         lblResult.Text = "Invalid characters";
-                        return false;
+                        isValid =  false;
                     }
-                    return true;
+                    isValid = true;
                     break;
                 case "rbCheckPalindrom":
-                    return true;
+                    isValid = true;
+                    break;
             }
 
-            return false;
+            if (!isValid)
+            {
+                lblResultBorder.BorderBrush = System.Windows.Media.Brushes.Red;
+            }
+
+            return isValid;
         }
 
 
@@ -187,7 +194,8 @@ namespace Lab_2019_Mar_10
                     {
                         return;
                     }
-                    lblResult.Text = "The average is: " + Average(txtInpt.Text);
+                    List<int> listOfNumbers = GetNumbersFromString(txtInpt.Text);
+                    lblResult.Text = "The average is: " + Average(listOfNumbers);
                     break;
                 case "rbCheckPalindrom":
                     if (!IsInputValid())
@@ -197,6 +205,8 @@ namespace Lab_2019_Mar_10
                     lblResult.Text = "\"" + txtInpt.Text + " \"" + (IsPalindrom(txtInpt.Text) ? " is a palindrom" : " is not a palindrom");
                     break;
             }
+
+            lblResultBorder.BorderBrush = System.Windows.Media.Brushes.Blue;
         }
 
         private void RbHello_OnClick(object sender, RoutedEventArgs e)
