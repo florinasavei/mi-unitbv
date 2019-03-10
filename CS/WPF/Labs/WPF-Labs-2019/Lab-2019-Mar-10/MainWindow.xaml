@@ -13,19 +13,19 @@
         </Grid.ColumnDefinitions>
         <WrapPanel HorizontalAlignment="Left" Height="88" Margin="240,51,0,0" VerticalAlignment="Top" Width="341" Grid.ColumnSpan="2" >
             <TextBlock TextWrapping="Wrap" Text="Select an Option!" Height="23" Width="335"/>
-            <ListBox Height="84" Width="339" Name="OptionsMenu" SelectionChanged="OptionsMenu_OnSelectionChanged" >
+            <ListBox Height="84" Width="339" Name="OptionsMenu" SelectionChanged="OptionsMenu_OnSelectionChanged">
                 <RadioButton x:Name="rbHello" Content="Say Hello!" Click="RbHello_OnClick" />
                 <RadioButton x:Name="rbAverage" Content="Calculate Average!"  Click="RbHello_OnClick" />
                 <RadioButton x:Name="rbCheckPalindrom" Content="Check Palindrom"  Click="RbHello_OnClick" />
             </ListBox>
         </WrapPanel>
-        <WrapPanel HorizontalAlignment="Left" Height="54" Margin="240,168,0,0" VerticalAlignment="Top" Width="341" Grid.ColumnSpan="2">
+        <WrapPanel HorizontalAlignment="Left" Height="54" Margin="240,169,0,0" VerticalAlignment="Top" Width="341" Grid.ColumnSpan="2">
             <TextBlock Name="lblInput"  TextWrapping="Wrap" Text="Input:" Width="167" Height="31"/>
             <TextBox Name="txtInpt" Height="23" TextWrapping="Wrap" Text="" Width="120"/>
         </WrapPanel>
         <WrapPanel HorizontalAlignment="Left" Height="99" Margin="240,248,0,0" VerticalAlignment="Top" Width="341" Grid.ColumnSpan="2">
             <Button Content="Ok" Width="75" Click="Button_Click"/>
-            <TextBlock TextWrapping="Wrap" Name="lblResult" Text="Result:" Height="42" Width="291" RenderTransformOrigin="0.512,1.162"/>
+            <TextBlock TextWrapping="Wrap" Name="lblResult" Text="" Height="54" Width="291" RenderTransformOrigin="0.512,1.162"/>
         </WrapPanel>
 
     </Grid>
