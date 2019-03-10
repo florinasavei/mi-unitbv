@@ -1,0 +1,15 @@
+3 radio in wrap panel
+
+1 - salut (rbHello)
+2 - media a 3 numere (rbAverage) doar Int
+3 - verificare palindrom (rbCheckPalindrom)
+
+- lblInfo (introduceti numele, introduceri numere, introduceti cuvant)
+- txtInput (folosit pt toate 3 optiunile) cu metoda de clear ca sa curatam formularul
+- btnOk
+- lblResults
+
+metode:
+- split string intro numbers
+- average
+- isPalindrom
