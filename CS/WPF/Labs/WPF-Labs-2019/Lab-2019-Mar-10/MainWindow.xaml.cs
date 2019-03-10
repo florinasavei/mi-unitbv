@@ -160,10 +160,16 @@ namespace Lab_2019_Mar_10
                         lblResult.Text = "Invalid numbers";
                         isValid = false;
                     }
-                    if (!char.IsDigit(txtInpt.Text[0]))
+                    char[] charsArray = txtInpt.Text.ToCharArray();
+                    foreach (char c in charsArray)
                     {
-                        lblResult.Text = "Invalid characters";
-                        isValid =  false;
+                        if (!char.IsWhiteSpace(c) && !char.IsDigit(c))
+                        {
+                            lblResult.Text = "Invalid character: \"" + c + " \"";
+                            isValid =  false;
+                            lblResultBorder.BorderBrush = System.Windows.Media.Brushes.Red;
+                            return isValid;
+                        }
                     }
                     isValid = true;
                     break;
