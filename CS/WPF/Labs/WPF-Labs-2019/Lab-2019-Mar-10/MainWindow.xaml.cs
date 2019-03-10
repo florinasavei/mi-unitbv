@@ -28,6 +28,7 @@ namespace Lab_2019_Mar_10
             InitializeComponent();
         }
 
+        #region Selection Listeners
 
         private void OptionsMenu_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -77,6 +78,8 @@ namespace Lab_2019_Mar_10
             }
         }
 
+        #endregion
+
         #region Action Reults
 
         private string SayHello(string s)
@@ -117,13 +120,13 @@ namespace Lab_2019_Mar_10
             switch (SelectedOption)
             {
                 case "rbHello":
-                    lblInput.Text = "Enter your name";
+                    lblInput.Content = new TextBlock() {Text = "Enter your name"};
                     break;
                 case "rbAverage":
-                    lblInput.Text = "Enter some numbers (space separated)";
+                    lblInput.Content = new TextBlock() { Text = "Enter some numbers (space separated)"};
                     break;
                 case "rbCheckPalindrom":
-                    lblInput.Text = "Enter any text";
+                    lblInput.Content = new TextBlock() { Text = "Enter any text"};
                     break;
             }
         }
