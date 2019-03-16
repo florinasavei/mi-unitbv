@@ -87,30 +87,6 @@ namespace Lab_2019_Mar_10
             return "Hello, " + s + " !  your name has " + s.Length + " characters";
         }
 
-        private float Average(List<int> numbers)
-        { 
-            return (float)numbers.Average();
-        }
-
-        private List<int> GetNumbersFromString(string s)
-        {
-            try
-            {
-                return new List<int>(Array.ConvertAll(s.Split(' '), int.Parse));
-            }
-            catch (Exception e)
-            {
-                lblResult.Text = "Invalid numbers";
-                throw new Exception(e.Message);
-            }
-        }
-
-        private bool IsPalindrom(string s)
-        {
-            string myString = s.ToLower();
-            string reversedString = new string(myString.Reverse().ToArray());
-            return string.CompareOrdinal(myString, reversedString) == 0;
-        }
 
         #endregion
 
@@ -203,15 +179,15 @@ namespace Lab_2019_Mar_10
                     {
                         return;
                     }
-                    List<int> listOfNumbers = GetNumbersFromString(txtInpt.Text);
-                    lblResult.Text = "The average is: " + Average(listOfNumbers);
+                    List<int> listOfNumbers = txtInpt.Text.GetNumbersFromString();
+                    lblResult.Text = "The average is: " + Utils.Average(listOfNumbers);
                     break;
                 case "rbCheckPalindrom":
                     if (!IsInputValid())
                     {
                         return;
                     }
-                    lblResult.Text = "\"" + txtInpt.Text + " \"" + (IsPalindrom(txtInpt.Text) ? " is a palindrom" : " is not a palindrom");
+                    lblResult.Text = "\"" + txtInpt.Text + " \"" + (txtInpt.Text.IsPalindrom() ? " is a palindrom" : " is not a palindrom");
                     break;
             }
 

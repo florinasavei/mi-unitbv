@@ -40,6 +40,5 @@
                 <TextBlock TextWrapping="Wrap" Name="lblResult" Text="" Height="20" Width="338"/>
             </Border>
         </WrapPanel>
-
     </Grid>
 </Window>
