@@ -23,7 +23,11 @@ namespace Lab_2019_Mar_10
 
             foreach (var word in splitedString)
             {
-                int.TryParse(word, out int intResult);
+                bool parseSuccess = int.TryParse(word, out int intResult);
+                if (!parseSuccess)
+                {
+                    return null;
+                }
                 result.Add(intResult);
             }
 

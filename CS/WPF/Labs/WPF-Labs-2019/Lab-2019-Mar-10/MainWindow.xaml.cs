@@ -159,7 +159,7 @@ namespace Lab_2019_Mar_10
             return isValid;
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void btnOk_Click(object sender, RoutedEventArgs e)
         {
             var userInput = txtInpt.Text;
             HandleUserInput(userInput);
