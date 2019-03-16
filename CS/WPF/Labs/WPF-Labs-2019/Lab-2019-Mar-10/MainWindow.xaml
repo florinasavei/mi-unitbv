@@ -35,7 +35,7 @@
             <TextBox x:Name="txtInpt" Height="24" TextWrapping="Wrap" Text="" Width="340" RenderTransformOrigin="0.515,1.604"/>
         </WrapPanel>
         <WrapPanel HorizontalAlignment="Left" Height="99" Margin="240,248,0,0" VerticalAlignment="Top" Width="341" Grid.ColumnSpan="2">
-            <Button Content="Ok" Width="75" Click="Button_Click"/>
+            <Button Content="Ok" Width="75" Name="btnOk" Click="Button_Click"/>
             <Border BorderThickness="4,4,4,4"  Name="lblResultBorder" BorderBrush="Black" Margin="5">
                 <TextBlock TextWrapping="Wrap" Name="lblResult" Text="" Height="20" Width="338"/>
             </Border>

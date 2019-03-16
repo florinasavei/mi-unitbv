@@ -20,7 +20,6 @@ namespace Lab_2019_Mar_10
     /// </summary>
     public partial class MainWindow : Window
     {
-
         public string SelectedOption { get; set; }
 
         public MainWindow()
@@ -87,7 +86,6 @@ namespace Lab_2019_Mar_10
             return "Hello, " + s + " !  your name has " + s.CountDistinctLetters() + " distinct letters";
         }
 
-
         #endregion
 
         private void PrepareInput()
@@ -116,7 +114,7 @@ namespace Lab_2019_Mar_10
 
         private bool IsInputValid()
         {
-            bool isValid = false;
+            bool isValid = true;
 
             if (string.IsNullOrWhiteSpace(txtInpt.Text))
             {
@@ -128,7 +126,6 @@ namespace Lab_2019_Mar_10
             switch (SelectedOption)
             {
                 case "rbHello":
-                    isValid = true;
                     break;
                 case "rbAverage":
                     if (txtInpt.Text.Contains(","))
@@ -147,7 +144,7 @@ namespace Lab_2019_Mar_10
                             return isValid;
                         }
                     }
-                    isValid = true;
+
                     break;
                 case "rbCheckPalindrom":
                     isValid = true;
@@ -162,13 +159,13 @@ namespace Lab_2019_Mar_10
             return isValid;
         }
 
-
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             var userInput = txtInpt.Text;
             HandleUserInput(userInput);
         }
 
+        #region RbHandlers
         private void HandleUserInput(string userInput)
         {
             if (!IsInputValid())
@@ -179,18 +176,36 @@ namespace Lab_2019_Mar_10
             switch (SelectedOption)
             {
                 case "rbHello":
-                    lblResult.Text = SayHello(userInput).ToString();
+                    HandleRbHello(userInput);
                     break;
                 case "rbAverage":
-                    List<int> listOfNumbers = userInput.SplitStringIntoNumbers();
-                    lblResult.Text = "The average is: " + Utils.Average(listOfNumbers);
+                    HandleRbAverage(userInput);
                     break;
                 case "rbCheckPalindrom":
-                    lblResult.Text = "\"" + txtInpt.Text + " \"" + (userInput.IsPalindrom() ? " is a palindrom" : " is not a palindrom");
+                    handleRbPalindrom(userInput);
                     break;
             }
 
             lblResultBorder.BorderBrush = System.Windows.Media.Brushes.Blue;
+        }
+
+        private void handleRbPalindrom(string userInput)
+        {
+            lblResult.Text = "\"" + txtInpt.Text + " \"" +
+                             (userInput.IsPalindrom() ? " is a palindrom" : " is not a palindrom");
+        }
+
+        private void HandleRbAverage(string userInput)
+        {
+            List<int> listOfNumbers = userInput.SplitStringIntoNumbers();
+            float m = Utils.Average(listOfNumbers);
+            lblResult.Text = "The average is: " + m.ToString("##.00");
+        }
+        #endregion
+
+        private void HandleRbHello(string userInput)
+        {
+            lblResult.Text = SayHello(userInput).ToString();
         }
 
         private void RbHello_OnClick(object sender, RoutedEventArgs e)
