@@ -96,13 +96,13 @@ namespace Lab_2019_Mar_10
             switch (SelectedOption)
             {
                 case "rbHello":
-                    lblInput.Content = new TextBlock() {Text = "Enter your name"};
+                    lblInfo.Content = new TextBlock() {Text = "Enter your name"};
                     break;
                 case "rbAverage":
-                    lblInput.Content = new TextBlock() { Text = "Enter some numbers (space separated)"};
+                    lblInfo.Content = new TextBlock() { Text = "Enter some numbers (space separated)"};
                     break;
                 case "rbCheckPalindrom":
-                    lblInput.Content = new TextBlock() { Text = "Enter any text"};
+                    lblInfo.Content = new TextBlock() { Text = "Enter any word to check if it is a palindrom"};
                     break;
             }
         }
@@ -179,7 +179,7 @@ namespace Lab_2019_Mar_10
                     {
                         return;
                     }
-                    List<int> listOfNumbers = txtInpt.Text.GetNumbersFromString();
+                    List<int> listOfNumbers = txtInpt.Text.SplitStringIntoNumbers();
                     lblResult.Text = "The average is: " + Utils.Average(listOfNumbers);
                     break;
                 case "rbCheckPalindrom":

@@ -13,18 +13,21 @@ namespace Lab_2019_Mar_10
             return string.CompareOrdinal(myString, reversedString) == 0;
         }
 
-        public static List<int> GetNumbersFromString(this string s)
+        public static List<int> SplitStringIntoNumbers(this string s)
         {
-            try
+            s = s.Trim();
+
+            string[] splitedString = s.Split(' ');
+
+            var result = new List<int>();
+
+            foreach (var word in splitedString)
             {
-                return new List<int>(Array.ConvertAll(s.Split(' '), int.Parse));
-            }
-            catch (Exception e)
-            {
-                throw new Exception(e.Message);
+                int.TryParse(word, out int intResult);
+                result.Add(intResult);
             }
 
-            //todo: use try-parse
+            return result;
         }
 
         public static int CountDistinctLetters(this string s)
