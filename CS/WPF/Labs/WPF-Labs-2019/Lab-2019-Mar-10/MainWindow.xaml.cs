@@ -96,13 +96,13 @@ namespace Lab_2019_Mar_10
             switch (SelectedOption)
             {
                 case "rbHello":
-                    lblInfo.Content = new TextBlock() {Text = "Enter your name"};
+                    lblInfo.Content = new TextBlock() { Text = "Enter your name" };
                     break;
                 case "rbAverage":
-                    lblInfo.Content = new TextBlock() { Text = "Enter some numbers (space separated)"};
+                    lblInfo.Content = new TextBlock() { Text = "Enter some numbers (space separated)" };
                     break;
                 case "rbCheckPalindrom":
-                    lblInfo.Content = new TextBlock() { Text = "Enter any word to check if it is a palindrom"};
+                    lblInfo.Content = new TextBlock() { Text = "Enter any word to check if it is a palindrom" };
                     break;
             }
         }
@@ -142,7 +142,7 @@ namespace Lab_2019_Mar_10
                         if (!char.IsWhiteSpace(c) && !char.IsDigit(c))
                         {
                             lblResult.Text = "Invalid character: \"" + c + " \"";
-                            isValid =  false;
+                            isValid = false;
                             lblResultBorder.BorderBrush = System.Windows.Media.Brushes.Red;
                             return isValid;
                         }
@@ -165,29 +165,28 @@ namespace Lab_2019_Mar_10
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            var userInput = txtInpt.Text;
+            HandleUserInput(userInput);
+        }
+
+        private void HandleUserInput(string userInput)
+        {
+            if (!IsInputValid())
+            {
+                return;
+            }
+
             switch (SelectedOption)
             {
                 case "rbHello":
-                    if (!IsInputValid())
-                    {
-                        return;
-                    }
-                    lblResult.Text = SayHello(txtInpt.Text).ToString();
+                    lblResult.Text = SayHello(userInput).ToString();
                     break;
                 case "rbAverage":
-                    if (!IsInputValid())
-                    {
-                        return;
-                    }
-                    List<int> listOfNumbers = txtInpt.Text.SplitStringIntoNumbers();
+                    List<int> listOfNumbers = userInput.SplitStringIntoNumbers();
                     lblResult.Text = "The average is: " + Utils.Average(listOfNumbers);
                     break;
                 case "rbCheckPalindrom":
-                    if (!IsInputValid())
-                    {
-                        return;
-                    }
-                    lblResult.Text = "\"" + txtInpt.Text + " \"" + (txtInpt.Text.IsPalindrom() ? " is a palindrom" : " is not a palindrom");
+                    lblResult.Text = "\"" + txtInpt.Text + " \"" + (userInput.IsPalindrom() ? " is a palindrom" : " is not a palindrom");
                     break;
             }
 
