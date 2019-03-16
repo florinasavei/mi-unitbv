@@ -84,7 +84,7 @@ namespace Lab_2019_Mar_10
 
         private string SayHello(string s)
         {
-            return "Hello, " + s + " !  your name has " + s.Length + " characters";
+            return "Hello, " + s + " !  your name has " + s.CountDistinctLetters() + " distinct letters";
         }
 
 

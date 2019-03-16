@@ -23,6 +23,13 @@ namespace Lab_2019_Mar_10
             {
                 throw new Exception(e.Message);
             }
+
+            //todo: use try-parse
+        }
+
+        public static int CountDistinctLetters(this string s)
+        {
+            return s.Distinct().Count();
         }
 
     }
