@@ -1,0 +1,18 @@
+﻿<Window x:Class="WPF_FileExplorer.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPF_FileExplorer"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Button x:Name="btnBack" Content="&lt;&lt;" HorizontalAlignment="Left" Margin="24,27,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.925,0.638" Click="BtnBack_Click"/>
+        <Button x:Name="btnForward" Content="&gt;&gt;" HorizontalAlignment="Left" Margin="104,28,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.925,0.638" Click="BtnForward_Click"/>
+        <Label Content="Path" HorizontalAlignment="Left" Margin="184,21,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.485,-0.254"/>
+        <TextBox x:Name="txtPath" HorizontalAlignment="Left" Height="23" Margin="227,24,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="458" IsReadOnly="True"/>
+        <Button x:Name="btnOpen" Content="Open" HorizontalAlignment="Left" Margin="690,27,0,0" VerticalAlignment="Top" Width="75" Click="BtnOpen_Click"/>
+        <WebBrowser x:Name="fileBrowser" HorizontalAlignment="Left" Height="339" Margin="24,52,0,0" VerticalAlignment="Top" Width="741"/>
+
+    </Grid>
+</Window>
