@@ -1,16 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using System.IO;
 
 namespace WPF_Explorer_Tree
@@ -31,11 +21,11 @@ namespace WPF_Explorer_Tree
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            foreach (string s in Directory.GetLogicalDrives())
+            foreach (string diveName in Directory.GetLogicalDrives())
             {
                 TreeViewItem item = new TreeViewItem();
-                item.Header = s;
-                item.Tag = s;
+                item.Header = diveName;
+                item.Tag = diveName;
                 item.FontWeight = FontWeights.Normal;
                 item.Items.Add(dummyNode);
                 item.Expanded += new RoutedEventHandler(folder_Expanded);
@@ -72,7 +62,11 @@ namespace WPF_Explorer_Tree
             TreeViewItem temp = ((TreeViewItem)tree.SelectedItem);
 
             if (temp == null)
+            {
                 return;
+
+            }
+
             SelectedImagePath = "";
             string temp1 = "";
             string temp2 = "";
