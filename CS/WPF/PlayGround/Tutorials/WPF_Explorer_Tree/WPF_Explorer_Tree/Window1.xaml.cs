@@ -11,13 +11,13 @@ namespace WPF_Explorer_Tree
     public partial class Window1 : Window
     {
         private object dummyNode = null;
+        public string SelectedImagePath { get; set; }
+
 
         public Window1()
         {
             InitializeComponent();
         }
-
-        public string SelectedImagePath { get; set; }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
