@@ -12,7 +12,7 @@
 
 
  //MPI sort methods
-double compare(const void * a, const void * b);
+int compare(const void * a, const void * b);
 //int MPI_Direct_Sort(int n, double *a, int root, MPI_Comm comm);
 int MPI_Ranking_sort(int n, double * a, int root, MPI_Comm comm);
 int MPI_Bucket_sort(int n, double m, double *a, int root, MPI_Comm comm);
@@ -136,13 +136,22 @@ int MPI_Bucket_sort(int n, double m, double *a, int root, MPI_Comm comm)
 
 	qsort(bucket, count, sizeof(double), compare);
 
-	MPI_Gather(count, 1, MPI_INT, counters, 1, MPI_INT, root, comm);
+	MPI_Gather(&count, 1, MPI_INT, counters, 1, MPI_INT, root, comm);
 
 	return MPI_SUCCESS;
 
 }
 
-double compare(const void * a, const void * b)
+int compare(const void * a, const void * b)
 {
-	return (*(double*)a - *(double*)b);
+	if( (*(double*)a > *(double*)b))
+	{
+		return 1;
+
+	}else if((*(double*)a < *(double*)b))
+	{
+			return -1;
+	}
+
+	return 0;
 }
