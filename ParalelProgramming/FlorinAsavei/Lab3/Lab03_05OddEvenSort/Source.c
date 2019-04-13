@@ -17,7 +17,7 @@ int compare(const void * a, const void * b);
 int MPI_Ranking_sort(int n, double * a, int root, MPI_Comm comm);
 int MPI_Bucket_sort(int n, double m, double *a, int root, MPI_Comm comm);
 int MPI_OddEven_sort(int n, double *a, int root, MPI_Comm comm);
-void exchange(int n, double *a, int sender, int receiver, MPI_Comm comm);
+void exchange(int n, double *aa, int sender, int receiver, MPI_Comm comm);
 //utility methods
 double * merge_array(int n, double * a, int m, double * b);
 void     merge_sort(int n, double * a);
@@ -208,20 +208,48 @@ int MPI_OddEven_sort(int n, double *a, int root, MPI_Comm comm)
 	return MPI_SUCCESS;
 }
 
-void exchange(int n, double *a, int sender, int receiver, MPI_Comm comm)
+void exchange(int n, double *aa, int sender, int receiver, MPI_Comm comm)
 {
 	int rank;
 	MPI_Comm_rank(comm, &rank);
+	MPI_Status status;
 
 	double *b = (double *)calloc(n, sizeof(double));
-	double *c = (double *)calloc(2*n, sizeof(double));
+	double *c;
 
-	if(rank == sender)
+	if (rank == sender)
 	{
-		
-	}else
-	{
-		
+		MPI_Send(aa, n, MPI_DOUBLE, receiver, 1, comm);
+		MPI_Recv(b, n, MPI_DOUBLE, receiver, 2, comm, &status);
+
+		c = merge_array(n, aa, n, b);
+
+		for (int i = 0; i < n; i++)
+			aa[i] = c[i];
 	}
+	else {
+		MPI_Recv(b, n, MPI_DOUBLE, sender, 1, comm, &status);
+		MPI_Send(aa, n, MPI_DOUBLE, sender, 2, comm);
 
+		c = merge_array(n, aa, n, b);
+
+		for (int i = 0; i < n; i++)
+			aa[i] = c[i + n];
+	}
+}
+
+double * merge_array(int n, double * a, int m, double * b) {
+
+	int i, j, k;
+	double * c = (double *)calloc(n + m, sizeof(double));
+
+	for (i = j = k = 0; (i < n) && (j < m);)
+
+		if (a[i] <= b[j])c[k++] = a[i++];
+		else c[k++] = b[j++];
+
+	if (i == n)for (; j < m;)c[k++] = b[j++];
+	else for (; i < n;)c[k++] = a[i++];
+
+	return c;
 }
