@@ -16,6 +16,7 @@ int compare(const void * a, const void * b);
 //int MPI_Direct_Sort(int n, double *a, int root, MPI_Comm comm);
 int MPI_Ranking_sort(int n, double * a, int root, MPI_Comm comm);
 int MPI_Bucket_sort(int n, double m, double *a, int root, MPI_Comm comm);
+int MPI_OddEven_sort(int n, double *a, int root, MPI_Comm comm);
 //utility methods
 double * merge_array(int n, double * a, int m, double * b);
 void     merge_sort(int n, double * a);
@@ -26,7 +27,7 @@ int main(int argc, char *argv[])
 
 	int rank, size;
 
-	int n = 100000, i, j, k, x, q, l, shell, pair, *nr;
+	int n = 12, i, j, k, x, q, l, shell, pair, *nr;
 	double m = 200.0;
 	double * scattered_array, *array = NULL;
 
@@ -50,26 +51,27 @@ int main(int argc, char *argv[])
 
 	}
 
-	/*printf("\nunsorted: \n");
+	printf("\nunsorted: \n");
 
 	if (rank == 0)
 	{
 		for (int i = 0; i < n; i++)printf("%lf ", array[i]);
-	}*/
+	}
 
 
 	double time1 = MPI_Wtime();
 	//MPI_Direct_Sort(n, array, 0, MPI_COMM_WORLD);
 	//MPI_Ranking_sort(n, array, 0, MPI_COMM_WORLD);
-	MPI_Bucket_sort(n, m, array, 0, MPI_COMM_WORLD);
+	//MPI_Bucket_sort(n, m, array, 0, MPI_COMM_WORLD);
+	MPI_OddEven_sort(n, array, 0, MPI_COMM_WORLD);
 
 	//printf("\nsorted: \n");
 	printf("\nProcessor %d worked for %lf\n", rank, MPI_Wtime() - time1);
 
-	//if (rank == 0)
-	//{
-	//	for (int i = 0; i < n; i++)printf("%lf ", array[i]);
-	//}
+	if (rank == 0)
+	{
+		for (int i = 0; i < n; i++)printf("%lf ", array[i]);
+	}
 
 	MPI_Finalize();
 
@@ -165,4 +167,31 @@ int compare(const void * a, const void * b)
 	}
 
 	return 0;
+}
+
+int MPI_OddEven_sort(int n, double *a, int root, MPI_Comm comm)
+{
+
+	int rank, size;
+	MPI_Comm_size(comm, &size);
+	MPI_Comm_rank(comm, &rank);
+
+	double *aa = (double *)calloc(n / size, sizeof(double));
+
+	MPI_Scatter(&a[0], n / size, MPI_DOUBLE, aa, n / size, MPI_DOUBLE, root, comm);
+	qsort(aa, n / size, sizeof(double), compare);
+
+	for (int i = 0; i < size; i++)
+	{
+		if ((i + rank) % 2 == 0)
+		{
+
+		}
+		else
+		{
+
+		}
+	}
+
+	return MPI_SUCCESS;
 }

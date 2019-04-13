@@ -1,1 +1,0 @@
-mpiexec -np 4 Lab03_02_DirectSort.exe 
