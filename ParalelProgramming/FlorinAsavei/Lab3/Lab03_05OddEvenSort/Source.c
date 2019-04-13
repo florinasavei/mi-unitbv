@@ -17,6 +17,7 @@ int compare(const void * a, const void * b);
 int MPI_Ranking_sort(int n, double * a, int root, MPI_Comm comm);
 int MPI_Bucket_sort(int n, double m, double *a, int root, MPI_Comm comm);
 int MPI_OddEven_sort(int n, double *a, int root, MPI_Comm comm);
+void exchange(int n, double *a, int sender, int receiver, MPI_Comm comm);
 //utility methods
 double * merge_array(int n, double * a, int m, double * b);
 void     merge_sort(int n, double * a);
@@ -185,13 +186,42 @@ int MPI_OddEven_sort(int n, double *a, int root, MPI_Comm comm)
 	{
 		if ((i + rank) % 2 == 0)
 		{
-
+			if(rank <size-1)
+			{
+				exchange(n / size, aa, rank, rank + 1, comm);
+			}
 		}
 		else
 		{
-
+			if(rank>0)
+			{
+				exchange(n / size, aa, rank-1, rank, comm);
+			}
 		}
+
+		MPI_Barrier(comm);
+
 	}
 
+	MPI_Gather(aa, n/size, MPI_DOUBLE, a, n/size, MPI_DOUBLE, root, comm);
+
 	return MPI_SUCCESS;
+}
+
+void exchange(int n, double *a, int sender, int receiver, MPI_Comm comm)
+{
+	int rank;
+	MPI_Comm_rank(comm, &rank);
+
+	double *b = (double *)calloc(n, sizeof(double));
+	double *c = (double *)calloc(2*n, sizeof(double));
+
+	if(rank == sender)
+	{
+		
+	}else
+	{
+		
+	}
+
 }
