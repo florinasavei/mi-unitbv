@@ -1,0 +1,24 @@
+
+1. Creati un nou proiect C++, console application
+
+2. Dati click dreapta pe proeict din solution explorer si selectati Properties
+
+3. Pe pagina de proprietati selectati din dropdownurile din susul ferestrei "All configurations" si "All platforms"
+
+4. Din tab-ul din dreapta selectati C/C++ --> General
+
+5. La "Additional Include Directories" adaugati: $(ProgramFiles)\Microsoft SDKs\MPI\Include\
+
+6. Din tab-ul din dreapta selectati Linker --> General
+
+7. La "Additional Library Directories" adaugati: $(ProgramFiles)\Microsoft SDKs\MPI\Lib\$(PlatformTarget)\
+
+8. Din tab-ul din dreapta selectati Linker --> Input
+
+9. La "Additinal Dependencies" adaugati:
+
+msmpi.lib
+
+msmpifec.lib
+
+msmpifmc.lib
