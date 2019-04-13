@@ -25,6 +25,6 @@ int main(int argc, char** argv) {
 	// Finalize the MPI environment.
 	MPI_Finalize();
 
-	printf("Press Any Key to Continue\n");
-	getchar();
+	//printf("Press Any Key to Continue\n");
+	//getchar();
 }
