@@ -26,7 +26,7 @@ int main(int argc, char *argv[])
 
 	int rank, size;
 
-	int n = 12, i, j, k, x, q, l, shell, pair, *nr;
+	int n = 100000, i, j, k, x, q, l, shell, pair, *nr;
 	double m = 200.0;
 	double * scattered_array, *array = NULL;
 
@@ -50,12 +50,12 @@ int main(int argc, char *argv[])
 
 	}
 
-	printf("\nunsorted: \n");
+	/*printf("\nunsorted: \n");
 
 	if (rank == 0)
 	{
 		for (int i = 0; i < n; i++)printf("%lf ", array[i]);
-	}
+	}*/
 
 
 	double time1 = MPI_Wtime();
@@ -64,12 +64,12 @@ int main(int argc, char *argv[])
 	MPI_Bucket_sort(n, m, array, 0, MPI_COMM_WORLD);
 
 	//printf("\nsorted: \n");
-	printf("Processor %d worked for %lf\n", rank, MPI_Wtime() - time1);
+	printf("\nProcessor %d worked for %lf\n", rank, MPI_Wtime() - time1);
 
-	if (rank == 0)
-	{
-		for (int i = 0; i < n; i++)printf("%lf ", array[i]);
-	}
+	//if (rank == 0)
+	//{
+	//	for (int i = 0; i < n; i++)printf("%lf ", array[i]);
+	//}
 
 	MPI_Finalize();
 
@@ -121,6 +121,7 @@ int MPI_Bucket_sort(int n, double m, double *a, int root, MPI_Comm comm)
 	MPI_Comm_size(comm, &size);
 	MPI_Comm_rank(comm, &rank);
 	int *counters = (int *)calloc(size, sizeof(int));
+	int *displacements = (int*)calloc(size, sizeof(int));
 
 	double * bucket = (double*)calloc(n, sizeof(double));
 
@@ -137,6 +138,15 @@ int MPI_Bucket_sort(int n, double m, double *a, int root, MPI_Comm comm)
 	qsort(bucket, count, sizeof(double), compare);
 
 	MPI_Gather(&count, 1, MPI_INT, counters, 1, MPI_INT, root, comm);
+
+	//create displacement array
+	displacements[0] = 0;
+	for(int i = 0; i<size-1; i++)
+	{
+		displacements[i + 1] = displacements[i] + counters[i];
+	}
+
+	MPI_Gatherv(bucket, count, MPI_DOUBLE, a, counters, displacements, MPI_DOUBLE, root, comm);
 
 	return MPI_SUCCESS;
 
