@@ -1,6 +1,8 @@
-1. Din fisierul source.c se modifica numarul de elemente
+0. Slutia se afla in calea mi-unitbv/ParalelProgramming/FlorinAsavei/Labs/
 
-int n = 100000, (cerinta este 1.000.0000, la RankingSort o s dureze foarte mult)
+1. Din fiserele .c se modifica numarul de elemente
+
+din int n = 100.000, (cerinta este 1.000.0000, la RankingSort o sa dureze foarte mult)
 
 2. Se face rebuild la solutie
 

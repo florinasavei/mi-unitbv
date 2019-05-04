@@ -28,7 +28,7 @@ int main(int argc, char *argv[])
 
 	int rank, size;
 
-	int n = 1000000, i, j, k, x, q, l, shell, pair, *nr;
+	int n = 100000, i, j, k, x, q, l, shell, pair, *nr;
 	double m = 200.0;
 	double * scattered_array, *array = NULL;
 
