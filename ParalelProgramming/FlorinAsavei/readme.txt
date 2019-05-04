@@ -1,5 +1,8 @@
 0. Slutia se afla in calea mi-unitbv/ParalelProgramming/FlorinAsavei/Labs/
 
+deschideti mi-unitbv\ParalelProgramming\FlorinAsavei\Labs\Labs.sln in Visual Studio 2017
+*toate setariel sunt deja facute la nivel de proiect
+
 1. Din fiserele .c se modifica numarul de elemente
 
 din int n = 100.000, (cerinta este 1.000.0000, la RankingSort o sa dureze foarte mult)
