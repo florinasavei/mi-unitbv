@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Source.c">
+    <ClCompile Include="BucketSort.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

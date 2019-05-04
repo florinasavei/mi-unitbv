@@ -1,6 +1,6 @@
 1. Din fisierul source.c se modifica numarul de elemente
 
-int n = 100000,
+int n = 100000, (cerinta este 1.000.0000, la RankingSort o s dureze foarte mult)
 
 2. Se face rebuild la solutie
 
@@ -12,5 +12,7 @@ mpiexec -np 4 Lab03_02_DirectSorting.exe
 
 unde 4 reprezinta numarul de procesoare
 
-5. rezultatul se trece intr-un excell
+* exista si un fisier .bat care va rula aceasta comanda la dublu click ;-) 
+
+5. rezultatul se trece intr-un excell (mi-unitbv\ParalelProgramming\FlorinAsavei\Labs)
 
