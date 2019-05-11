@@ -17,7 +17,7 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Lab03_05OddEvenSort", "..\L
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Lab03_02_DirectSorting", "..\Lab3\Lab03_02_DirectSorting\Lab03_02_DirectSorting.vcxproj", "{5CE546CC-0074-4E9B-ABF3-6FABA35CF299}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Lab4_01Matrix", "Lab4_01Matrix\Lab4_01Matrix.vcxproj", "{981D3D4C-ADA8-4A03-B04C-B3514BC6ED08}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Lab4_01Matrix", "..\Lab4\Lab4_01Matrix\Lab4_01Matrix.vcxproj", "{981D3D4C-ADA8-4A03-B04C-B3514BC6ED08}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
