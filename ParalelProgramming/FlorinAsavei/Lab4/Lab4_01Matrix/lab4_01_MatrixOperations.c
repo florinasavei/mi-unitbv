@@ -18,7 +18,7 @@ int ** trans_matrix(int n, int m, int ** a);
 int MPI_Prod_matrix(int n, int ** a, int ** b, int ** c, int root, MPI_Comm comm);
 
 int main(int argc, char ** argv) {
-	int size, rank, tag = 1, i, j, n = 2000, **a, **b, **c, **a1, **c1;
+	int size, rank, tag = 1, i, j, n = 1200, **a, **b, **c, **a1, **c1;
 	double time;
 
 	MPI_Status stat;
