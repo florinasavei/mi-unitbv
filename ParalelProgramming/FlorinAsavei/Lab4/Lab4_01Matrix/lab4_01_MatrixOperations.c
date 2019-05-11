@@ -12,6 +12,7 @@ void init_unit_matrix(int n, int m, int **a);
 
 // matrix operations
 int ** prod_matrix(int n, int l, int m, int ** a, int ** b);
+int ** pseudoprod_matrix(int n, int l, int m, int ** a, int ** b);
 int ** trans_matrix(int n, int m, int ** a);
 
 // MPI functions
@@ -241,6 +242,25 @@ int ** prod_matrix(int n, int l, int m, int ** a, int ** b) {
 
 }
 
+int ** pseudoprod_matrix(int n, int l, int m, int ** a, int ** b) {
+
+	int i, j, k, ** c;
+
+	c = alloc_matrix(n, m);
+
+	for (i = 0; i < n; i++)for (j = 0; j < m; j++) {
+
+		c[i][j] = 0;
+
+		for (k = 0; k < l; k++) {
+			c[i][j] = c[i][j] + a[i][k] * b[j][k];
+		}
+
+	}
+
+	return c;
+
+}
 
 int ** trans_matrix(int n, int m, int ** a) {
 
