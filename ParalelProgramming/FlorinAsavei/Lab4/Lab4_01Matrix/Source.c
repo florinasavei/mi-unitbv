@@ -7,6 +7,8 @@
 int ** alloc_matrix(int n, int m);
 void init_matrix(int n, int m, int ** a);
 void print_matrix(int n, int m, int ** a);
+void init_unit_matrix(int n, int m, int **a);
+
 
 // matrix operations
 int ** prod_matrix(int n, int l, int m, int ** a, int ** b);
@@ -16,7 +18,7 @@ int ** trans_matrix(int n, int m, int ** a);
 int MPI_Prod_matrix(int n, int ** a, int ** b, int ** c, int root, MPI_Comm comm);
 
 int main(int argc, char ** argv) {
-	int size, rank, tag = 1, i, j, n = 20, **a, **b, **c, **a1, **c1;
+	int size, rank, tag = 1, i, j, n = 2000, **a, **b, **c, **a1, **c1;
 	double time;
 
 	MPI_Status stat;
@@ -148,6 +150,17 @@ void init_matrix(int n, int m, int ** a) {
 
 }
 
+void init_unit_matrix(int n, int m, int ** a) {
+
+	int i, j;
+
+	for (i = 0; i < n; i++)for (j = 0; j < m; j++)
+		if (i == j)a[i][j] = 1;
+		else a[i][j] = 0;
+
+
+}
+
 
 /*
 
@@ -166,17 +179,23 @@ The function arguments are:
 
 void print_matrix(int n, int m, int ** a) {
 
+
 	int i, j;
 
-	printf("\n");
-
-	for (i = 0; i < n; i++) {
-
-		for (j = 0; j < m; j++)printf("%d ", a[i][j]);
-
+	if (n <= 20)
+	{
 		printf("\n");
 
+		for (i = 0; i < n; i++) {
+
+			for (j = 0; j < m; j++)printf("%d ", a[i][j]);
+
+			printf("\n");
+
+		}
 	}
+
+
 
 
 }
