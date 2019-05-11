@@ -48,15 +48,15 @@ int main(int argc, char ** argv) {
 
 	time = MPI_Wtime() - time;
 
-	printf("Processor %d worked for %lf\n\n", rank, time);
+	printf("\nProcessor %d worked for %lf\n\n", rank, time);
 
 	if (rank == 0) {
 
 		// initialise the matrices
 
 		printf("Matrix a:\n\n"); print_matrix(n, n, a);
-		printf("Matrix b:\n\n"); print_matrix(n, n, b);
-		printf("Matrix c:\n\n"); print_matrix(n, n, c);
+		printf("\nMatrix b:\n\n"); print_matrix(n, n, b);
+		printf("\nMatrix c:\n\n"); print_matrix(n, n, c);
 
 
 	}
@@ -70,16 +70,26 @@ int main(int argc, char ** argv) {
 
 int MPI_Prod_matrix(int n, int ** a, int ** b, int ** c, int root, MPI_Comm comm)
 {
+	int rank, size;
 	// get rank and size of comm
+	MPI_Comm_rank(comm, &rank);
+	MPI_Comm_size(comm, &size);
 
 	// alocate space for local_a and local_c
+	int **local_a = alloc_matrix(n / size, n);
+	int **local_c = alloc_matrix(n / size, n);
 
-	// scatter a to local_a and bcast b
+	// scatter a to local_a and bcast_b
+	MPI_Scatter(a[0], n*n/size, MPI_INT, local_a[0], n*n/size, MPI_INT, root, comm);
+	MPI_Bcast(b[0], n*n, MPI_INT, root, comm);
 
 	// calculate local_c = local_a * b
+	local_c = prod_matrix(n / size, n, n, local_a, b);
 
 	// gather local_c
+	MPI_Gather(local_c[0], n*n / size, MPI_INT, c[0], n*n / size, MPI_INT, root, comm);
 
+	return MPI_SUCCESS;
 }
 
 
