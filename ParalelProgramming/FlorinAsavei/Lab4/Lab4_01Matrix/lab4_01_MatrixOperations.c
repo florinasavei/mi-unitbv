@@ -13,10 +13,15 @@ void init_unit_matrix(int n, int m, int **a);
 // matrix operations
 int ** prod_matrix(int n, int l, int m, int ** a, int ** b);
 int ** pseudoprod_matrix(int n, int l, int m, int ** a, int ** b);
+
 int ** trans_matrix(int n, int m, int ** a);
+
 
 // MPI functions
 int MPI_Prod_matrix(int n, int ** a, int ** b, int ** c, int root, MPI_Comm comm);
+int MPI_PseudoProd_matrix(int n, int ** a, int ** b, int ** c, int root, MPI_Comm comm);
+int MPI_Prod_column_matrix(int n, int ** a, int ** b, int ** c, int root, MPI_Comm comm);
+
 
 int main(int argc, char ** argv) {
 	int size, rank, tag = 1, i, j, n = 1200, **a, **b, **c, **a1, **c1;
@@ -47,7 +52,9 @@ int main(int argc, char ** argv) {
 
 	time = MPI_Wtime();
 
-	MPI_Prod_matrix(n, a, b, c, 0, MPI_COMM_WORLD);
+	//MPI_Prod_matrix(n, a, b, c, 0, MPI_COMM_WORLD);
+	MPI_PseudoProd_matrix(n, a, b, c, 0, MPI_COMM_WORLD);
+	//MPI_Prod_column_matrix(n, a, b, c, 0, MPI_COMM_WORLD);
 
 	time = MPI_Wtime() - time;
 
@@ -88,9 +95,70 @@ int MPI_Prod_matrix(int n, int ** a, int ** b, int ** c, int root, MPI_Comm comm
 
 	// calculate local_c = local_a * b
 	local_c = prod_matrix(n / size, n, n, local_a, b);
+	//local_c = pseudoprod_matrix(n / size, n, n, local_a, trans_matrix(n,n,b));
 
 	// gather local_c
 	MPI_Gather(local_c[0], n*n / size, MPI_INT, c[0], n*n / size, MPI_INT, root, comm);
+
+	return MPI_SUCCESS;
+}
+
+
+int MPI_PseudoProd_matrix(int n, int ** a, int ** b, int ** c, int root, MPI_Comm comm)
+{
+	int rank, size;
+	// get rank and size of comm
+	MPI_Comm_rank(comm, &rank);
+	MPI_Comm_size(comm, &size);
+
+	// alocate space for local_a and local_c
+	int **local_a = alloc_matrix(n / size, n);
+	int **local_c = alloc_matrix(n / size, n);
+
+	// scatter a to local_a and bcast_b
+	MPI_Scatter(a[0], n*n / size, MPI_INT, local_a[0], n*n / size, MPI_INT, root, comm);
+	MPI_Bcast(b[0], n*n, MPI_INT, root, comm);
+
+	// calculate local_c = local_a * b
+	//local_c = prod_matrix(n / size, n, n, local_a, b);
+	local_c = pseudoprod_matrix(n / size, n, n, local_a, trans_matrix(n, n, b));
+
+	// gather local_c
+	MPI_Gather(local_c[0], n*n / size, MPI_INT, c[0], n*n / size, MPI_INT, root, comm);
+
+	return MPI_SUCCESS;
+}
+
+int MPI_Prod_column_matrix(int n, int ** a, int ** b, int ** c, int root, MPI_Comm comm)
+{
+	int rank, size;
+	// get rank and size of comm
+	MPI_Comm_rank(comm, &rank);
+	MPI_Comm_size(comm, &size);
+
+	// alocate space for local_a and local_c
+	int **local_b = alloc_matrix(n, n/size);
+	int **local_c = alloc_matrix(n, n/size);
+
+	//create column datataType
+
+	MPI_Datatype column;
+	MPI_Type_vector(n, 1, n, MPI_INT, &column);
+	MPI_Type_commit(&column);
+
+	// scatter a to local_a and bcast_b
+	MPI_Bcast(a[0], n, column, root, comm);
+
+	MPI_Scatter(b[0], n / size, column, local_b[0], n / size, column, root, comm);
+	//MPI_Bcast(b[0], n*n, MPI_INT, root, comm);
+
+
+	// calculate local_c = local_a * b
+	local_c = prod_matrix(n, n, n/size, a, local_b);
+	//local_c = pseudoprod_matrix(n / size, n, n, local_a, trans_matrix(n, n, b));
+
+	// gather local_c
+	MPI_Gather(local_c[0], n / size, column, c[0], n / size, column, root, comm);
 
 	return MPI_SUCCESS;
 }
