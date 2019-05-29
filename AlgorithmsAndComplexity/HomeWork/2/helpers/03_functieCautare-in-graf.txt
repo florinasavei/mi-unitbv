@@ -1,0 +1,21 @@
+//evita starile duplicate
+//colectieNoduri = coada de prioritati, contine nodurile care urmeaza a fi explorate
+//stariVechi = multimea nodurilor deja vizitate
+functie Cautare-in-graf(problema, colectieNoduri) returneza o solutie sau esuare
+	stariVechi <- multime vida
+	colectieNoduri <- insereaza(creaza-nod(stare-initiala[problema]), colectieNoduri)
+	cicleaza
+		daca colectieNoduri este goala
+			atunci returneaza esuare
+		sfarsit daca
+		nod <- scoate-primul(colectieNoduri)
+		daca test-scop(problema, stare[nod]) //se testeaza daca este nod final
+			atunci returneaza Solutie(nod)
+		sfarsit daca
+		daca stare[nod] nu este in stariVechi
+			atunci
+				adauga stare[nod] la stariVechi
+				colectieNoduri <- insereaza-toate(Expandeaza(nod, problema), colectieNoduri)
+		sfarsit daca
+	sfarsit cicleaza
+				

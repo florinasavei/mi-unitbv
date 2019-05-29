@@ -1,0 +1,6 @@
+In parlament fiecare senator poate face parte din 0 sau mai multe comisii parlamentare.
+Fiecare comisie are cate un presedinte ales dintre membrii acesteia.
+Din principii democratice, un senator nu poate fi presedinte decat cel mult intr-o comisie.
+Sa se determine o modalitate de a alege presedintii pt fiecare comisie in parte astfel incat sa nu existe doua comisii cu acelasi presedinte.
+
+Nr de senatori este "n", nr de comisii este "m". "m, "n" <=100

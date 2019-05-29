@@ -1,0 +1,13 @@
+Prelugrarea lucrarilor pe masini paralele
+
+Consideram ca avem j lucrari si M pasini paralele.
+
+Fiecare lucrare are un timp necesar prelucrarii notat Pj = numarul de zile necesare unei masini pentru a a efectua lucrarea.
+
+aj = inceputul zilei in care lucrarea devine disponibila
+
+tj = inceputul zilei in care lucrarea trebuie sa fie gata
+
+O masina poate executa o singura lucrare la un moment dat si o lucrarea paote fi procesata de a o singura masina la un moment dat. Dar este permisa intreruperea procesarii oricarei lucraric are poate fi reluata intr-o alta zi de o alta masina.
+
+Trebuie sa daterminam o planificare astfel incat toate lcurarile sa fie efectuate inaintea termenelor limita sau a arata ca o astfel de planificare nu este posibila.

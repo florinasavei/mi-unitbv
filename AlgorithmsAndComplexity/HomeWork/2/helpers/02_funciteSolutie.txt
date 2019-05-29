@@ -1,0 +1,10 @@
+functie Solutie(nod) returneaza o lista ordonata de noduri
+	drumNoduri <- lista vida
+	cicleaza
+		adauga nod la inceoutul lui drumNoduri
+		daca parinte[nod] = nimic
+			atunci returnraza drumNoduri
+			altfel nod <- parinte[nod]
+		sfarit daca
+	sfarsit cicleaza
+	

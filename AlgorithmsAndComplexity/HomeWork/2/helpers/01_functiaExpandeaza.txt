@@ -1,0 +1,14 @@
+functia Expandeaza(nod, problema) returneaza un set de noduri
+	succesori <- set vid
+	pentru fiecare(actiune, stareNoua) in functie-succesor(problema, stare[nod]) executa
+		s <-un nod nou
+		nod-parint[s] <- nod
+		actiune[s] <- actiune
+		stare[s] <- stareNoua
+		costul-caii[s] <- costul-caii[nod] + costul-pasului(stare[nod], actiune, stareNoua)
+		adancime[s] <- adancime[nod]+1
+		adauga s la succesori
+	sfarsit pentru
+	returneaza succesori
+	
+	

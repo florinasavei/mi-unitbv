@@ -1,0 +1,16 @@
+A* vs ShortestPath(Dijksra/Bellman -Ford/Floyd Warshall)
+
+De pus in evidenta:
+
+Nr de noduri analizate de algoritm pana ajunge sa gaseasca nr minim
+(A* ar trebui sa explorexe mai putine noduri decat Dijksra)
+
+! se evita euristica cu modul
+
+Input: 
+	- Orase (coordonate)
+	- Drumuri Specificate (+costuri = distanta reala dintre orase)
+
+Output:
+	 Drumul Minim : nr de noduri analizate de A* 
+					nr de noduri analizate de Dijkstra

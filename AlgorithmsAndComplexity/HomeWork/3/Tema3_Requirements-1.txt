@@ -1,0 +1,13 @@
+Problema Reprezentantilor:
+
+Intr-un oras "q" locuitori fac parte din "k"  asociatii si din "r" partide politice.
+Fircare locuitor face parte din cel putin o asociatie si poate sa fie membru doar la un singur partid.
+Fiecare asociatie trebuie sa-si desemneze un membru care sa-l reprezinte in consiliul orasului astfel incat numarul membrilor din consiliu care fac parte din partidul "Pn" sa fie cel mult "Mn".
+
+Daca exista un astfel de consiliu, atunci acesta este unul echilibrat.
+
+Asociatii A = {a1, a2,...an}
+		  B = {b1, b2,...bn}
+		  C = {c1, c2,...cn}
+		  
+		  

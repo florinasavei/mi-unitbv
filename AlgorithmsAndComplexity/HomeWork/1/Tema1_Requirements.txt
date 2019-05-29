@@ -1,0 +1,13 @@
+Comparatie intre diversi algoritmi de sortare dpdf al timpului de executie
+
+Bouble-Sort
+Ranking-Sort
+Merge-Sort
+Bitonic-Sort
+Linear-Sort
+
+Fiecare algoritm trebuie evalual pt sirusi de dimensiuni n :100.000 , 300.000, 600.000 si 1.000.000
+Siruri generate aleator
+-pt fiecare n fixat se genereaza siruri aleatori de k-ori (k=3)
+-se va face media timpilor de executie
+-acelasi vector sa fie sortat cu toate metodele
